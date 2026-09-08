@@ -1,0 +1,530 @@
+/* =============================================
+   GLOBAL RESET & BASE STYLES
+   Remove default browser spacing and set the
+   base font and box-sizing for the whole page.
+============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Makes anchor links scroll smoothly instead of jumping */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #222222;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =============================================
+   REUSABLE LAYOUT CONTAINER
+   Centers page content and adds side padding.
+   Used inside each section to keep things aligned.
+============================================= */
+.section-container,
+.nav-container,
+.hero-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+
+/* =============================================
+   REUSABLE BUTTON STYLES
+   .btn is the base. Add .btn-primary or
+   .btn-secondary for color variants.
+   Add .btn-small for compact project card buttons,
+   or .btn-large for the big resume button.
+============================================= */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  border: none;
+}
+
+/* Primary button: filled blue */
+.btn-primary {
+  background-color: #3A7BD5;
+  color: #ffffff;
+}
+
+/* Secondary button: outlined */
+.btn-secondary {
+  background-color: transparent;
+  color: #3A7BD5;
+  border: 1.5px solid #3A7BD5;
+}
+
+/* Hover: just slightly fade both button types */
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* Small variant for project card buttons */
+.btn-small {
+  padding: 7px 16px;
+  font-size: 13px;
+}
+
+/* Large variant for the resume download button */
+.btn-large {
+  padding: 14px 32px;
+  font-size: 16px;
+  margin-top: 32px;
+}
+
+
+/* =============================================
+   REUSABLE SECTION TITLE STYLES
+   The heading and subtitle used at the top of
+   the Projects and Contact sections.
+============================================= */
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 15px;
+  color: #666666;
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+
+
+/* =============================================
+   NAVIGATION BAR
+   Sticks to the top of the screen as you scroll.
+   Contains your name on the left and links on the right.
+============================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  z-index: 100; /* Keeps the navbar above all other content */
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+/* Your name / logo text in the nav */
+.nav-logo {
+  font-size: 17px;
+  font-weight: 600;
+  color: #222222;
+}
+
+/* The list of nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #555555;
+  transition: color 0.15s ease;
+}
+
+/* Nav link turns blue when hovered */
+.nav-links a:hover {
+  color: #3A7BD5;
+}
+
+/* Hamburger button — hidden on desktop, shown on mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* The three horizontal lines of the hamburger icon */
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #333333;
+  border-radius: 2px;
+}
+
+
+/* =============================================
+   HERO / ABOUT ME SECTION
+   Two-column layout: text on the left, photo on the right.
+   Collapses to a single column on smaller screens.
+============================================= */
+.hero {
+  padding: 72px 0 64px;
+  background-color: #ffffff;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+/* Text column: name, subtitle, bio, buttons */
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #3A7BD5;
+  margin-bottom: 20px;
+}
+
+.hero-bio {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+/* The two side-by-side buttons below the bio */
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Photo column: circular profile picture */
+.hero-photo {
+  flex-shrink: 0;
+}
+
+/* The actual photo — circular crop */
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e8e8e8;
+}
+
+/* Fallback initials circle — shown when photo file isn't found */
+.profile-initials {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #e8f0fb;
+  border: 3px solid #c6d8f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  font-weight: 700;
+  color: #3A7BD5;
+}
+
+
+/* =============================================
+   PROJECTS SECTION
+   Light gray background to visually separate it
+   from the white hero section. Contains a grid
+   of project cards.
+============================================= */
+.projects {
+  padding: 72px 0;
+  background-color: #f5f5f5;
+}
+
+/* The card grid — 3 columns on desktop */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+
+/* =============================================
+   PROJECT CARD
+   Each card has an image on top and info below.
+   Border changes color slightly on hover — that's it.
+============================================= */
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.15s ease;
+}
+
+/* On hover, the card border turns blue */
+.project-card:hover {
+  border-color: #3A7BD5;
+}
+
+/* The image area at the top of the card */
+.project-img-wrapper {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder shown when the image file isn't found */
+.project-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+/* The text area below the image */
+.project-info {
+  padding: 20px;
+}
+
+.project-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.project-desc {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Tool/skill tags row */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+/* Individual tag pill */
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #3A7BD5;
+  background-color: #e8f0fb;
+  border-radius: 4px;
+  padding: 3px 9px;
+}
+
+/* The two buttons at the bottom of each card */
+.project-links {
+  display: flex;
+  gap: 10px;
+}
+
+
+/* =============================================
+   CONTACT SECTION
+   White background. Has a row of contact links
+   and a big resume download button at the bottom.
+============================================= */
+.contact {
+  padding: 72px 0;
+  background-color: #ffffff;
+}
+
+/* Row of contact link items */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: center;
+}
+
+/* Each individual contact link (email, linkedin, github) */
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #444444;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+/* Link text and icon turn blue on hover */
+.contact-link:hover {
+  color: #3A7BD5;
+}
+
+/* The SVG icon next to each contact link */
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+
+/* =============================================
+   FOOTER
+   Simple dark bar at the very bottom of the page.
+============================================= */
+.footer {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  padding: 20px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: #888888;
+}
+
+
+/* =============================================
+   RESPONSIVE: TABLET (max 768px)
+   At this width, the projects grid goes from
+   3 columns to 2 columns, and the hero stacks
+   vertically with the photo on top.
+============================================= */
+@media (max-width: 768px) {
+
+  /* Reduce hero padding and stack the two columns */
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .hero-container {
+    flex-direction: column-reverse; /* photo shows above text */
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Center the buttons */
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  /* Projects go to 2 columns */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Show hamburger, hide nav links by default */
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 8px 0;
+  }
+
+  /* When JS adds the 'open' class, the mobile menu shows */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 12px 24px;
+  }
+
+}
+
+
+/* =============================================
+   RESPONSIVE: MOBILE (max 480px)
+   At this width, projects grid goes to 1 column
+   and fonts get a bit smaller.
+============================================= */
+@media (max-width: 480px) {
+
+  .hero-text h1 {
+    font-size: 26px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  /* Projects stack to a single column */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact links also stack vertically */
+  .contact-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+}
