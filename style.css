@@ -111,6 +111,22 @@ img {
 
 
 /* =============================================
+   UNDER CONSTRUCTION BANNER
+   Thin bar at the very top of the page.
+   DELETE this block (and the matching HTML div) when the site is ready.
+============================================= */
+.construction-banner {
+  background-color: #e8f0fb;   /* light blue — matches tag color */
+  color: #3A7BD5;               /* accent blue text */
+  border-bottom: 1px solid #c6d8f5;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+}
+
+
+/* =============================================
    NAVIGATION BAR
    Sticks to the top of the screen as you scroll.
    Name on the left, section links on the right.
