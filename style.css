@@ -549,6 +549,83 @@ img {
 
 
 /* =============================================
+   MODAL OVERLAY — GEE App Popup
+   Full-screen dark overlay that appears when
+   "View Project" is clicked on the Pakistan card.
+   Hidden by default; JS adds the 'open' class to show it.
+============================================= */
+
+/* Dark overlay covering the whole viewport */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;                              /* shorthand for top/right/bottom/left: 0 */
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark bg */
+  z-index: 200;                          /* sits above navbar (z-index 100) */
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* JS adds 'open' to show the modal */
+.modal-overlay.open {
+  display: flex;
+}
+
+/* White box containing the header + iframe */
+.modal-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 90vw;
+  max-width: 1100px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Header row: title on left, X button on right */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0; /* header stays fixed height while iframe stretches */
+}
+
+.modal-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+}
+
+/* X close button — plain, no box */
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #555555;
+  cursor: pointer;
+  padding: 2px 6px;
+  transition: color 0.15s ease;
+}
+
+.modal-close:hover {
+  color: #3A7BD5;
+}
+
+/* The GEE app iframe — fills all remaining height */
+.modal-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+
+/* =============================================
    FOOTER
    Simple bar at the bottom of the page.
 ============================================= */

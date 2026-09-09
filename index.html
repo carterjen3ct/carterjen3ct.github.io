@@ -117,52 +117,6 @@
         These are the projects I'm most proud of. Each one pushed me to learn something new.
       </p>
 
-      <!-- ---- FEATURED: Eastern Kentucky Flood Analysis ---- -->
-      <!--
-        UPDATE: Save your map export/screenshot as assets/projects/ek-flood.png
-        UPDATE: Add a GitHub link if you have one for this project
-      -->
-      <div class="featured-card">
-        <div class="featured-img-wrapper">
-          <img
-            src="assets/projects/ek-flood.png"
-            alt="Map showing flood inundation in Eastern Kentucky"
-            class="featured-img"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
-          <div class="featured-img-placeholder" style="display: none;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="featured-info">
-          <h3 class="featured-title">Eastern Kentucky Flood Analysis</h3>
-          <p class="featured-desc">
-            For this project I analyzed the 2022 Eastern Kentucky flooding event using a combination
-            of ArcGIS Pro and Google Earth Engine. I processed Sentinel-1 SAR satellite imagery to
-            detect flood inundation extent across the region, then used ArcGIS Pro to build out the
-            spatial analysis and map layouts. The goal was to understand where flooding was worst and
-            how the landscape features contributed to it — stuff like elevation, land cover, and
-            proximity to waterways.
-          </p>
-          <p class="featured-methods">
-            <strong>Methods:</strong> SAR image processing, flood extent mapping, spatial overlay analysis, geodatabase management
-          </p>
-          <div class="featured-tags">
-            <span class="tag">ArcGIS Pro</span>
-            <span class="tag">Google Earth Engine</span>
-            <span class="tag">Sentinel-1 SAR</span>
-            <span class="tag">Python</span>
-          </div>
-          <div class="featured-links">
-            <a href="#" class="btn btn-small btn-primary">View Project</a>
-            <a href="#" class="btn btn-small btn-secondary">GitHub</a>
-          </div>
-        </div>
-      </div>
-
       <!-- ---- FEATURED: Pakistan Flood Accuracy Assessment (Google Earth Engine) ---- -->
       <!--
         UPDATE: Save a screenshot of your GEE script output as assets/projects/pakistan-flood.png
@@ -203,8 +157,66 @@
             <span class="tag">Remote Sensing</span>
           </div>
           <div class="featured-links">
-            <a href="#" class="btn btn-small btn-primary">View Project</a>
+            <!--
+              This button opens the GEE app modal popup.
+              UPDATE: Once you have your published GEE app URL, paste it into script.js
+              where indicated (GEE_APP_URL constant near the bottom of the file).
+            -->
+            <button class="btn btn-small btn-primary" id="openGeeModal">View Project</button>
             <a href="#" class="btn btn-small btn-secondary">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- FEATURED: DFW Vehicle Emissions Exposure ---- -->
+      <!--
+        UPDATE: Save a screenshot of your kernel density or hex-cell map as assets/projects/dfw-emissions.png
+        UPDATE: Once your StoryMap is published, replace the href="#" on the View Project button with the StoryMap URL
+      -->
+      <div class="featured-card">
+        <div class="featured-img-wrapper">
+          <img
+            src="assets/projects/dfw-emissions.png"
+            alt="Kernel density map of vehicle emissions exposure across the DFW metro area"
+            class="featured-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="featured-img-placeholder" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="featured-info">
+          <h3 class="featured-title">DFW Vehicle Emissions Exposure</h3>
+          <p class="featured-desc">
+            For this project my team looked at how vehicle-related emissions are distributed across
+            the Dallas-Fort Worth metro area and which communities are most exposed. We pulled in OSM
+            road network data and TxDOT Annual Average Daily Traffic (AADT) counts, then used kernel
+            density analysis and hex-cell mapping in R to build an emissions exposure surface across
+            the region. From there we ran regression against census tract-level socioeconomic variables —
+            income, race, and population density — to see whether higher-exposure areas track with
+            lower-income or minority communities. Group project for GEOG 469 Urban Analytics.
+          </p>
+          <p class="featured-methods">
+            <strong>Methods:</strong> Kernel density analysis, hexagonal grid mapping, spatial regression, census data integration
+          </p>
+          <div class="featured-tags">
+            <span class="tag">R</span>
+            <span class="tag">sf</span>
+            <span class="tag">tmap</span>
+            <span class="tag">tidyverse</span>
+            <span class="tag">Urban Analytics</span>
+            <span class="tag">Regression</span>
+          </div>
+          <div class="featured-links">
+            <!--
+              UPDATE: Replace href="#" below with your published ArcGIS StoryMap URL
+              once you have finished building it in storymaps.arcgis.com
+            -->
+            <a href="#" class="btn btn-small btn-primary">View Project</a>
+            <a href="https://github.com/almzrei/project469" class="btn btn-small btn-secondary" target="_blank" rel="noopener noreferrer">View Code</a>
           </div>
         </div>
       </div>
@@ -445,25 +457,6 @@
           <p class="gallery-tile-title">GEOG 366 — Lab 8</p>
         </div>
 
-        <!-- ---- GALLERY TILE: GEOG 469 Lab 1 — SlickCity Business Analyst ---- -->
-        <!-- UPDATE: Save as assets/projects/geog469-lab1.png -->
-        <div class="gallery-tile">
-          <div class="gallery-img-wrapper">
-            <img
-              src="assets/projects/geog469-lab1.png"
-              alt="GEOG 469 Lab 1 — SlickCity Business Analyst"
-              class="gallery-img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
-            <div class="gallery-img-placeholder" style="display: none;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                <circle cx="12" cy="9" r="2.5"/>
-              </svg>
-            </div>
-          </div>
-          <p class="gallery-tile-title">GEOG 469 — Lab 1: Business Analyst</p>
-        </div>
 
       </div><!-- end gallery-grid -->
     </div>
@@ -561,75 +554,6 @@
           </div>
         </div>
 
-        <!-- ---- CODING CARD: CS343 Card Game ---- -->
-        <!-- UPDATE: Save a screenshot as assets/projects/cs343-cardgame.png -->
-        <!-- UPDATE: Add your GitHub link if available -->
-        <div class="project-card">
-          <div class="project-img-wrapper">
-            <img
-              src="assets/projects/cs343-cardgame.png"
-              alt="Screenshot of CS343 card game lab"
-              class="project-img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
-            <div class="project-img-placeholder" style="display: none;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                <circle cx="12" cy="9" r="2.5"/>
-              </svg>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Card Game — CS343 Lab 10</h3>
-            <p class="project-desc">
-              Browser-based card game built in JavaScript for CS343. Implements game logic,
-              card rendering, and interactive UI from scratch using vanilla JS and CSS.
-            </p>
-            <div class="project-tags">
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML/CSS</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="btn btn-small btn-primary">Play</a>
-              <a href="#" class="btn btn-small btn-secondary">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ---- CODING CARD: Time Series Table Checker ---- -->
-        <!-- UPDATE: Save a screenshot of the GUI as assets/projects/python-checker.png -->
-        <div class="project-card">
-          <div class="project-img-wrapper">
-            <img
-              src="assets/projects/python-checker.png"
-              alt="Screenshot of Time Series Table Checker Python app"
-              class="project-img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
-            <div class="project-img-placeholder" style="display: none;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                <circle cx="12" cy="9" r="2.5"/>
-              </svg>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Time Series Table Checker</h3>
-            <p class="project-desc">
-              A Python desktop tool with a GUI that compares Excel time series tables and flags
-              differences. Built with tkinter for the interface and pandas for the data processing.
-              Includes unit tests.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">pandas</span>
-              <span class="tag">tkinter</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="btn btn-small btn-secondary">GitHub</a>
-            </div>
-          </div>
-        </div>
 
       </div><!-- end projects-grid -->
     </div>
@@ -700,6 +624,32 @@
   <footer class="footer">
     <p>&copy; 2026 Carter Jensen. Built with HTML, CSS &amp; JavaScript.</p>
   </footer>
+
+  <!-- =============================================
+       MODAL: Pakistan GEE App Popup
+       Opens when "View Project" is clicked on the Pakistan card.
+       JS in script.js handles open/close. The iframe src is set
+       dynamically so GEE stops loading when the modal is closed.
+  ============================================== -->
+  <div id="geeModal" class="modal-overlay">
+    <div class="modal-box">
+
+      <!-- Header row: title left, close button right -->
+      <div class="modal-header">
+        <span class="modal-title">Pakistan 2022 Flood — GEE App</span>
+        <button class="modal-close" id="closeGeeModal" aria-label="Close">&times;</button>
+      </div>
+
+      <!-- No src attribute — script.js sets it when the modal opens -->
+      <iframe
+        id="geeFrame"
+        class="modal-iframe"
+        allowfullscreen
+        title="Pakistan 2022 Flood Accuracy Assessment — Google Earth Engine App"
+      ></iframe>
+
+    </div>
+  </div>
 
   <script src="script.js"></script>
 
