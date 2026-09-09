@@ -8,7 +8,7 @@
   <!-- Link to our stylesheet -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Google Font: Inter (clean, readable sans-serif) -->
+  <!-- Google Font: Inter -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
@@ -18,23 +18,24 @@
 
   <!-- =============================================
        SECTION: Navigation Bar
-       Sticky top bar with your name and page links.
-       The hamburger button shows on mobile screens.
+       Sticky top bar. Has your name on the left and
+       five section links on the right. Hamburger menu
+       shows on mobile.
   ============================================== -->
   <nav class="navbar">
     <div class="nav-container">
 
-      <!-- Your name / logo on the left -->
       <a href="#about" class="nav-logo">Carter Jensen</a>
 
-      <!-- Navigation links (hidden on mobile, shown via hamburger) -->
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#featured-projects">Featured Projects</a></li>
+        <li><a href="#map-gallery">Map Gallery</a></li>
+        <li><a href="#coding-projects">Coding Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <!-- Hamburger button — only visible on small screens -->
+      <!-- Hamburger button — only shows on mobile -->
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span>
         <span></span>
@@ -47,21 +48,20 @@
 
   <!-- =============================================
        SECTION: Hero / About Me
-       The first thing visitors see. Has your name,
-       title, a short bio, your photo, and two buttons.
+       First thing visitors see. Has your name, title,
+       bio, profile photo, and two buttons.
   ============================================== -->
   <section class="hero" id="about">
     <div class="hero-container">
 
-      <!-- Text side: name, title, bio, buttons -->
       <div class="hero-text">
         <h1>Carter Jensen</h1>
         <p class="hero-subtitle">GIS Student</p>
 
         <!--
-          UPDATE: Replace this bio with your own words.
-          Write 2-4 sentences about who you are, what you're studying,
-          and what kind of work you're interested in.
+          UPDATE: Replace this with your own bio.
+          2-4 sentences about who you are, what you study,
+          and what kind of work you're looking for.
         -->
         <p class="hero-bio">
           Hey, I'm Carter — a GIS student who enjoys working with spatial data,
@@ -70,23 +70,19 @@
           web mapping, and I'm looking for opportunities to apply them.
         </p>
 
-        <!-- Buttons to jump to projects or download resume -->
         <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">View My Projects</a>
-
+          <a href="#featured-projects" class="btn btn-primary">View My Projects</a>
           <!--
-            UPDATE: Make sure your resume PDF is saved at assets/resume.pdf
-            so this download button works.
+            UPDATE: Save your resume as assets/resume.pdf for this to work.
           -->
           <a href="assets/resume.pdf" class="btn btn-secondary" download>Download Resume</a>
         </div>
       </div>
 
-      <!-- Photo side: circular profile photo -->
       <div class="hero-photo">
         <!--
-          UPDATE: Replace "assets/profile-photo.jpg" with your actual photo file.
-          Until then, the initials "CJ" will show as a placeholder.
+          UPDATE: Save your photo as assets/profile-photo.jpg.
+          Until then the "CJ" initials placeholder will show.
         -->
         <img
           src="assets/profile-photo.jpg"
@@ -94,7 +90,6 @@
           class="profile-img"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
-        <!-- Fallback initials avatar — shows if photo file is not found -->
         <div class="profile-initials" style="display: none;">CJ</div>
       </div>
 
@@ -103,41 +98,409 @@
 
 
   <!-- =============================================
-       SECTION: Projects
-       A grid of project cards. Each card has an image,
-       title, description, tool tags, and two links.
+       SECTION: Featured Projects
+       The most important projects get a large two-column
+       card: image on the left, detailed description on
+       the right. These are the ones you want employers
+       to actually read and dig into.
 
-       TO ADD A NEW PROJECT: Copy one full <div class="project-card">
-       block below and paste it after the last one. Then update the
-       image, title, description, tags, and links.
+       TO ADD A FEATURED PROJECT: Copy one full
+       <div class="featured-card"> block and paste it
+       after the last one. Update the image, title,
+       description, tags, and links.
   ============================================== -->
-  <section class="projects" id="projects">
+  <section class="featured-projects" id="featured-projects">
     <div class="section-container">
 
-      <h2 class="section-title">My Projects</h2>
-      <p class="section-subtitle">Here are some of the GIS projects I've worked on. Click to learn more.</p>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">
+        These are the projects I'm most proud of. Each one pushed me to learn something new.
+      </p>
+
+      <!-- ---- FEATURED: Eastern Kentucky Flood Analysis ---- -->
+      <!--
+        UPDATE: Save your map export/screenshot as assets/projects/ek-flood.png
+        UPDATE: Add a GitHub link if you have one for this project
+      -->
+      <div class="featured-card">
+        <div class="featured-img-wrapper">
+          <img
+            src="assets/projects/ek-flood.png"
+            alt="Map showing flood inundation in Eastern Kentucky"
+            class="featured-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="featured-img-placeholder" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="featured-info">
+          <h3 class="featured-title">Eastern Kentucky Flood Analysis</h3>
+          <p class="featured-desc">
+            For this project I analyzed the 2022 Eastern Kentucky flooding event using a combination
+            of ArcGIS Pro and Google Earth Engine. I processed Sentinel-1 SAR satellite imagery to
+            detect flood inundation extent across the region, then used ArcGIS Pro to build out the
+            spatial analysis and map layouts. The goal was to understand where flooding was worst and
+            how the landscape features contributed to it — stuff like elevation, land cover, and
+            proximity to waterways.
+          </p>
+          <p class="featured-methods">
+            <strong>Methods:</strong> SAR image processing, flood extent mapping, spatial overlay analysis, geodatabase management
+          </p>
+          <div class="featured-tags">
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">Google Earth Engine</span>
+            <span class="tag">Sentinel-1 SAR</span>
+            <span class="tag">Python</span>
+          </div>
+          <div class="featured-links">
+            <a href="#" class="btn btn-small btn-primary">View Project</a>
+            <a href="#" class="btn btn-small btn-secondary">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- FEATURED: Pakistan Flood Accuracy Assessment (Google Earth Engine) ---- -->
+      <!--
+        UPDATE: Save a screenshot of your GEE script output as assets/projects/pakistan-flood.png
+        UPDATE: Add your GEE script link or GitHub link if you have one
+      -->
+      <div class="featured-card">
+        <div class="featured-img-wrapper">
+          <img
+            src="assets/projects/pakistan-flood.png"
+            alt="Google Earth Engine flood accuracy assessment for Pakistan 2022"
+            class="featured-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="featured-img-placeholder" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="featured-info">
+          <h3 class="featured-title">Pakistan 2022 Flood Accuracy Assessment</h3>
+          <p class="featured-desc">
+            This project used Google Earth Engine to assess how accurately satellite-derived flood
+            maps captured the actual 2022 Pakistan flood event — one of the worst flooding disasters
+            in recent history. I wrote a JavaScript script in the GEE Code Editor to process
+            Sentinel-1 SAR imagery, generate flood inundation masks, and run an accuracy assessment
+            comparing the results to reference data. It was a good exercise in understanding both the
+            power and limitations of remote sensing for disaster response.
+          </p>
+          <p class="featured-methods">
+            <strong>Methods:</strong> SAR change detection, accuracy assessment, confusion matrix analysis, remote sensing
+          </p>
+          <div class="featured-tags">
+            <span class="tag">Google Earth Engine</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Sentinel-1 SAR</span>
+            <span class="tag">Remote Sensing</span>
+          </div>
+          <div class="featured-links">
+            <a href="#" class="btn btn-small btn-primary">View Project</a>
+            <a href="#" class="btn btn-small btn-secondary">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- FEATURED: GEOG 366 Final Project ---- -->
+      <!--
+        UPDATE: Save your map/project image as assets/projects/geog366-final.png
+        UPDATE: Fill in the actual project description once you tell me what it was about
+        UPDATE: Fix the tool tags to match what you actually used
+      -->
+      <div class="featured-card">
+        <div class="featured-img-wrapper">
+          <img
+            src="assets/projects/geog366-final.png"
+            alt="GEOG 366 Final Project map"
+            class="featured-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="featured-img-placeholder" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="featured-info">
+          <h3 class="featured-title">GEOG 366 Final Project</h3>
+          <!--
+            UPDATE: Replace this placeholder description with what the project was actually about.
+          -->
+          <p class="featured-desc">
+            Final project for GEOG 366. Replace this with a description of what you analyzed,
+            what data you used, and what you found. Keep it to 3-5 sentences — enough to give
+            someone a real sense of the work without going overboard.
+          </p>
+          <p class="featured-methods">
+            <!--
+              UPDATE: Replace with the actual methods you used.
+            -->
+            <strong>Methods:</strong> Spatial analysis, cartographic design, data visualization
+          </p>
+          <div class="featured-tags">
+            <!-- UPDATE: Replace with the actual tools you used -->
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">Spatial Analysis</span>
+          </div>
+          <div class="featured-links">
+            <a href="#" class="btn btn-small btn-primary">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---- FEATURED: GEOG 367 Final Project ---- -->
+      <!--
+        UPDATE: Save your project image as assets/projects/geog367-final.png
+        UPDATE: Fill in the actual project description
+      -->
+      <div class="featured-card">
+        <div class="featured-img-wrapper">
+          <img
+            src="assets/projects/geog367-final.png"
+            alt="GEOG 367 Final Project map"
+            class="featured-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="featured-img-placeholder" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="featured-info">
+          <h3 class="featured-title">GEOG 367 Final Project</h3>
+          <!--
+            UPDATE: Replace this placeholder description with what the project was actually about.
+          -->
+          <p class="featured-desc">
+            Final project for GEOG 367. Replace this with a description of what you analyzed,
+            what data you used, and what you found. Keep it to 3-5 sentences.
+          </p>
+          <p class="featured-methods">
+            <!-- UPDATE: Replace with actual methods -->
+            <strong>Methods:</strong> Spatial analysis, cartographic design, data visualization
+          </p>
+          <div class="featured-tags">
+            <!-- UPDATE: Replace with actual tools -->
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">Spatial Analysis</span>
+          </div>
+          <div class="featured-links">
+            <a href="#" class="btn btn-small btn-primary">View Project</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       SECTION: Map Gallery
+       A grid of map thumbnails — labs and smaller
+       assignments that are worth showing but don't
+       need a full description. Just an image and a title.
+
+       TO ADD A MAP: Copy one <div class="gallery-tile">
+       block and paste it in the grid. Update the image
+       src and the title text.
+  ============================================== -->
+  <section class="map-gallery" id="map-gallery">
+    <div class="section-container">
+
+      <h2 class="section-title">Map Gallery</h2>
+      <p class="section-subtitle">
+        A collection of maps and lab work from my GIS coursework.
+      </p>
+
+      <div class="gallery-grid">
+
+        <!-- ---- GALLERY TILE: GEOG 365 Final Map ---- -->
+        <!-- UPDATE: Save your map image as assets/projects/geog365-final-map.png -->
+        <div class="gallery-tile">
+          <div class="gallery-img-wrapper">
+            <img
+              src="assets/projects/geog365-final-map.png"
+              alt="GEOG 365 Final Map"
+              class="gallery-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="gallery-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="gallery-tile-title">GEOG 365 — Final Map</p>
+        </div>
+
+        <!-- ---- GALLERY TILE: GEOG 365 Lab 8 ---- -->
+        <!-- UPDATE: Save as assets/projects/geog365-lab8.png -->
+        <div class="gallery-tile">
+          <div class="gallery-img-wrapper">
+            <img
+              src="assets/projects/geog365-lab8.png"
+              alt="GEOG 365 Lab 8"
+              class="gallery-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="gallery-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="gallery-tile-title">GEOG 365 — Lab 8</p>
+        </div>
+
+        <!-- ---- GALLERY TILE: GEOG 365 Lab 7 Part 1 ---- -->
+        <!-- UPDATE: Save as assets/projects/geog365-lab7.png -->
+        <div class="gallery-tile">
+          <div class="gallery-img-wrapper">
+            <img
+              src="assets/projects/geog365-lab7.png"
+              alt="GEOG 365 Lab 7 Part 1"
+              class="gallery-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="gallery-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="gallery-tile-title">GEOG 365 — Lab 7 Part 1</p>
+        </div>
+
+        <!-- ---- GALLERY TILE: GEOG 365 Lab 6 ---- -->
+        <!-- UPDATE: Save as assets/projects/geog365-lab6.png -->
+        <div class="gallery-tile">
+          <div class="gallery-img-wrapper">
+            <img
+              src="assets/projects/geog365-lab6.png"
+              alt="GEOG 365 Lab 6"
+              class="gallery-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="gallery-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="gallery-tile-title">GEOG 365 — Lab 6</p>
+        </div>
+
+        <!-- ---- GALLERY TILE: GEOG 365 Lab 5 ---- -->
+        <!-- UPDATE: Save as assets/projects/geog365-lab5.png -->
+        <div class="gallery-tile">
+          <div class="gallery-img-wrapper">
+            <img
+              src="assets/projects/geog365-lab5.png"
+              alt="GEOG 365 Lab 5"
+              class="gallery-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="gallery-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="gallery-tile-title">GEOG 365 — Lab 5</p>
+        </div>
+
+        <!-- ---- GALLERY TILE: GEOG 366 Lab 8 ---- -->
+        <!-- UPDATE: Save as assets/projects/geog366-lab8.png -->
+        <div class="gallery-tile">
+          <div class="gallery-img-wrapper">
+            <img
+              src="assets/projects/geog366-lab8.png"
+              alt="GEOG 366 Lab 8"
+              class="gallery-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="gallery-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="gallery-tile-title">GEOG 366 — Lab 8</p>
+        </div>
+
+        <!-- ---- GALLERY TILE: GEOG 469 Lab 1 — SlickCity Business Analyst ---- -->
+        <!-- UPDATE: Save as assets/projects/geog469-lab1.png -->
+        <div class="gallery-tile">
+          <div class="gallery-img-wrapper">
+            <img
+              src="assets/projects/geog469-lab1.png"
+              alt="GEOG 469 Lab 1 — SlickCity Business Analyst"
+              class="gallery-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="gallery-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="gallery-tile-title">GEOG 469 — Lab 1: Business Analyst</p>
+        </div>
+
+      </div><!-- end gallery-grid -->
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       SECTION: Coding Projects
+       CS coursework and programming projects that
+       aren't GIS but still show off your skills.
+
+       TO ADD A CODING PROJECT: Copy one full
+       <div class="project-card"> block and paste it
+       in the grid. Update the image, title, description,
+       tags, and links.
+  ============================================== -->
+  <section class="coding-projects" id="coding-projects">
+    <div class="section-container">
+
+      <h2 class="section-title">Coding Projects</h2>
+      <p class="section-subtitle">
+        Some of the programming work I've done outside of GIS — web apps, games, and tools.
+      </p>
 
       <div class="projects-grid">
 
-        <!-- ---- PROJECT CARD 1 ---- -->
-        <!--
-          UPDATE: Replace all placeholder values below with your real project info.
-          - src="assets/projects/project1.png" → your project screenshot
-          - alt="..." → describe what the image shows
-          - Project Title → your actual project name
-          - Description → 1-2 sentences about what you made and why
-          - Tool tags → the tools/software you used
-          - href="#" on buttons → link to your live project or GitHub repo
-        -->
+        <!-- ---- CODING CARD: CS345 Tower Defense Game ---- -->
+        <!-- UPDATE: Save a screenshot of the game as assets/projects/cs345-game.png -->
+        <!-- UPDATE: Add the GitHub link for your team's repo -->
         <div class="project-card">
           <div class="project-img-wrapper">
             <img
-              src="assets/projects/project1.png"
-              alt="Screenshot of project 1"
+              src="assets/projects/cs345-game.png"
+              alt="Screenshot of tower defense game"
               class="project-img"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             />
-            <!-- Placeholder shown if image file is missing -->
             <div class="project-img-placeholder" style="display: none;">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
@@ -146,28 +509,31 @@
             </div>
           </div>
           <div class="project-info">
-            <h3 class="project-title">Project Title</h3>
+            <h3 class="project-title">Tower Defense Game</h3>
             <p class="project-desc">
-              A short description of what this project is about and what it does.
-              Keep it to 1–2 sentences so it's easy to read at a glance.
+              Group project for CS345 — we built a fully playable tower defense game in JavaScript
+              using the p5.js library. Has multiple tower types, enemy waves, upgrades, and sound effects.
             </p>
             <div class="project-tags">
-              <span class="tag">ArcGIS Pro</span>
-              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">p5.js</span>
+              <span class="tag">HTML/CSS</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn btn-small btn-primary">View Project</a>
+              <a href="#" class="btn btn-small btn-primary">Play Game</a>
               <a href="#" class="btn btn-small btn-secondary">GitHub</a>
             </div>
           </div>
         </div>
 
-        <!-- ---- PROJECT CARD 2 ---- -->
+        <!-- ---- CODING CARD: CS347 Django Local Library ---- -->
+        <!-- UPDATE: Save a screenshot of the app as assets/projects/cs347-django.png -->
+        <!-- UPDATE: Add your GitHub link -->
         <div class="project-card">
           <div class="project-img-wrapper">
             <img
-              src="assets/projects/project2.png"
-              alt="Screenshot of project 2"
+              src="assets/projects/cs347-django.png"
+              alt="Screenshot of Django local library web app"
               class="project-img"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             />
@@ -179,28 +545,30 @@
             </div>
           </div>
           <div class="project-info">
-            <h3 class="project-title">Project Title</h3>
+            <h3 class="project-title">Local Library Web App</h3>
             <p class="project-desc">
-              A short description of what this project is about and what it does.
-              Keep it to 1–2 sentences so it's easy to read at a glance.
+              Full-stack web application built with Django for CS347. A library catalog system
+              with user authentication, book browsing, borrowing records, and an admin interface.
             </p>
             <div class="project-tags">
-              <span class="tag">QGIS</span>
-              <span class="tag">Leaflet</span>
+              <span class="tag">Django</span>
+              <span class="tag">Python</span>
+              <span class="tag">SQLite</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn btn-small btn-primary">View Project</a>
               <a href="#" class="btn btn-small btn-secondary">GitHub</a>
             </div>
           </div>
         </div>
 
-        <!-- ---- PROJECT CARD 3 ---- -->
+        <!-- ---- CODING CARD: CS343 Card Game ---- -->
+        <!-- UPDATE: Save a screenshot as assets/projects/cs343-cardgame.png -->
+        <!-- UPDATE: Add your GitHub link if available -->
         <div class="project-card">
           <div class="project-img-wrapper">
             <img
-              src="assets/projects/project3.png"
-              alt="Screenshot of project 3"
+              src="assets/projects/cs343-cardgame.png"
+              alt="Screenshot of CS343 card game lab"
               class="project-img"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             />
@@ -212,17 +580,52 @@
             </div>
           </div>
           <div class="project-info">
-            <h3 class="project-title">Project Title</h3>
+            <h3 class="project-title">Card Game — CS343 Lab 10</h3>
             <p class="project-desc">
-              A short description of what this project is about and what it does.
-              Keep it to 1–2 sentences so it's easy to read at a glance.
+              Browser-based card game built in JavaScript for CS343. Implements game logic,
+              card rendering, and interactive UI from scratch using vanilla JS and CSS.
+            </p>
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML/CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-small btn-primary">Play</a>
+              <a href="#" class="btn btn-small btn-secondary">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- CODING CARD: Time Series Table Checker ---- -->
+        <!-- UPDATE: Save a screenshot of the GUI as assets/projects/python-checker.png -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img
+              src="assets/projects/python-checker.png"
+              alt="Screenshot of Time Series Table Checker Python app"
+              class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="project-img-placeholder" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Time Series Table Checker</h3>
+            <p class="project-desc">
+              A Python desktop tool with a GUI that compares Excel time series tables and flags
+              differences. Built with tkinter for the interface and pandas for the data processing.
+              Includes unit tests.
             </p>
             <div class="project-tags">
               <span class="tag">Python</span>
-              <span class="tag">GeoPandas</span>
+              <span class="tag">pandas</span>
+              <span class="tag">tkinter</span>
             </div>
             <div class="project-links">
-              <a href="#" class="btn btn-small btn-primary">View Project</a>
               <a href="#" class="btn btn-small btn-secondary">GitHub</a>
             </div>
           </div>
@@ -235,8 +638,8 @@
 
   <!-- =============================================
        SECTION: Contact / Resume
-       Links for email, LinkedIn, GitHub, and a
-       prominent button to download your resume.
+       Email, LinkedIn, GitHub links and a big
+       resume download button.
   ============================================== -->
   <section class="contact" id="contact">
     <div class="section-container">
@@ -247,10 +650,9 @@
         If you want to connect or have questions about my work, feel free to reach out.
       </p>
 
-      <!-- Row of contact links -->
       <div class="contact-links">
 
-        <!-- Email link -->
+        <!-- Email -->
         <a href="mailto:carter.t.jensen@gmail.com" class="contact-link">
           <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -260,7 +662,7 @@
         </a>
 
         <!--
-          UPDATE: Replace "#" with your actual LinkedIn profile URL.
+          UPDATE: Replace "#" with your LinkedIn URL.
           Example: https://www.linkedin.com/in/your-username
         -->
         <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
@@ -274,17 +676,16 @@
           LinkedIn
         </a>
 
-        <!-- GitHub link -->
-        <a href="https://github.com/cartejens3ct" class="contact-link" target="_blank" rel="noopener noreferrer">
+        <!-- GitHub -->
+        <a href="https://github.com/carterjen3ct" class="contact-link" target="_blank" rel="noopener noreferrer">
           <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
           </svg>
-          github.com/cartejens3ct
+          github.com/carterjen3ct
         </a>
 
-      </div><!-- end contact-links -->
+      </div>
 
-      <!-- Big resume download button -->
       <a href="assets/resume.pdf" class="btn btn-primary btn-large" download>
         Download My Resume
       </a>
@@ -295,14 +696,11 @@
 
   <!-- =============================================
        SECTION: Footer
-       Simple copyright line at the bottom.
   ============================================== -->
   <footer class="footer">
     <p>&copy; 2026 Carter Jensen. Built with HTML, CSS &amp; JavaScript.</p>
   </footer>
 
-
-  <!-- Link to our JavaScript file — loaded at bottom so HTML loads first -->
   <script src="script.js"></script>
 
 </body>
