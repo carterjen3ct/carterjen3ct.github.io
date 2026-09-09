@@ -49,10 +49,9 @@ img {
 
 /* =============================================
    REUSABLE BUTTON STYLES
-   .btn is the base. Add .btn-primary or
-   .btn-secondary for color variants.
-   Add .btn-small for compact project card buttons,
-   or .btn-large for the big resume button.
+   .btn is the base. Add .btn-primary for filled blue,
+   .btn-secondary for outlined, .btn-small for compact,
+   .btn-large for the big resume download button.
 ============================================= */
 .btn {
   display: inline-block;
@@ -65,31 +64,26 @@ img {
   border: none;
 }
 
-/* Primary button: filled blue */
 .btn-primary {
   background-color: #3A7BD5;
   color: #ffffff;
 }
 
-/* Secondary button: outlined */
 .btn-secondary {
   background-color: transparent;
   color: #3A7BD5;
   border: 1.5px solid #3A7BD5;
 }
 
-/* Hover: just slightly fade both button types */
 .btn:hover {
   opacity: 0.85;
 }
 
-/* Small variant for project card buttons */
 .btn-small {
   padding: 7px 16px;
   font-size: 13px;
 }
 
-/* Large variant for the resume download button */
 .btn-large {
   padding: 14px 32px;
   font-size: 16px;
@@ -99,8 +93,7 @@ img {
 
 /* =============================================
    REUSABLE SECTION TITLE STYLES
-   The heading and subtitle used at the top of
-   the Projects and Contact sections.
+   Heading and subtitle at the top of each section.
 ============================================= */
 .section-title {
   font-size: 28px;
@@ -113,21 +106,37 @@ img {
   font-size: 15px;
   color: #666666;
   margin-bottom: 40px;
-  max-width: 560px;
+  max-width: 600px;
+}
+
+
+/* =============================================
+   UNDER CONSTRUCTION BANNER
+   Thin bar at the very top of the page.
+   DELETE this block (and the matching HTML div) when the site is ready.
+============================================= */
+.construction-banner {
+  background-color: #e8f0fb;   /* light blue — matches tag color */
+  color: #3A7BD5;               /* accent blue text */
+  border-bottom: 1px solid #c6d8f5;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
 }
 
 
 /* =============================================
    NAVIGATION BAR
    Sticks to the top of the screen as you scroll.
-   Contains your name on the left and links on the right.
+   Name on the left, section links on the right.
 ============================================= */
 .navbar {
   position: sticky;
   top: 0;
   background-color: #ffffff;
   border-bottom: 1px solid #e8e8e8;
-  z-index: 100; /* Keeps the navbar above all other content */
+  z-index: 100;
 }
 
 .nav-container {
@@ -137,33 +146,32 @@ img {
   height: 60px;
 }
 
-/* Your name / logo text in the nav */
 .nav-logo {
   font-size: 17px;
   font-weight: 600;
   color: #222222;
+  white-space: nowrap;
 }
 
-/* The list of nav links */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-links a {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   color: #555555;
   transition: color 0.15s ease;
+  white-space: nowrap;
 }
 
-/* Nav link turns blue when hovered */
 .nav-links a:hover {
   color: #3A7BD5;
 }
 
-/* Hamburger button — hidden on desktop, shown on mobile */
+/* Hamburger button — hidden on desktop, visible on mobile */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -174,7 +182,6 @@ img {
   padding: 4px;
 }
 
-/* The three horizontal lines of the hamburger icon */
 .hamburger span {
   display: block;
   width: 22px;
@@ -186,8 +193,8 @@ img {
 
 /* =============================================
    HERO / ABOUT ME SECTION
-   Two-column layout: text on the left, photo on the right.
-   Collapses to a single column on smaller screens.
+   Two columns: text on the left, photo on the right.
+   Collapses to single column on smaller screens.
 ============================================= */
 .hero {
   padding: 72px 0 64px;
@@ -200,7 +207,6 @@ img {
   gap: 56px;
 }
 
-/* Text column: name, subtitle, bio, buttons */
 .hero-text {
   flex: 1;
 }
@@ -228,19 +234,17 @@ img {
   max-width: 520px;
 }
 
-/* The two side-by-side buttons below the bio */
 .hero-buttons {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
 }
 
-/* Photo column: circular profile picture */
 .hero-photo {
   flex-shrink: 0;
 }
 
-/* The actual photo — circular crop */
+/* Circular profile photo */
 .profile-img {
   width: 200px;
   height: 200px;
@@ -249,7 +253,7 @@ img {
   border: 3px solid #e8e8e8;
 }
 
-/* Fallback initials circle — shown when photo file isn't found */
+/* Initials fallback — shows when photo file isn't found */
 .profile-initials {
   width: 200px;
   height: 200px;
@@ -266,29 +270,193 @@ img {
 
 
 /* =============================================
-   PROJECTS SECTION
-   Light gray background to visually separate it
-   from the white hero section. Contains a grid
-   of project cards.
+   FEATURED PROJECTS SECTION
+   Light gray background. Each featured project
+   gets a large two-column card: image on the left,
+   detailed text on the right.
 ============================================= */
-.projects {
+.featured-projects {
   padding: 72px 0;
   background-color: #f5f5f5;
 }
 
-/* The card grid — 3 columns on desktop */
+/* Two-column card layout */
+.featured-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  margin-bottom: 32px;
+  transition: border-color 0.15s ease;
+}
+
+.featured-card:hover {
+  border-color: #3A7BD5;
+}
+
+/* Left column: the project image */
+.featured-img-wrapper {
+  background-color: #f0f0f0;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder shown when image file is missing */
+.featured-img-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+/* Right column: title, description, methods, tags, links */
+.featured-info {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.featured-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.featured-desc {
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.7;
+}
+
+/* Methods line — shown in bold with regular text after */
+.featured-methods {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Tool/skill tag pills */
+.featured-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.featured-links {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Pushes buttons to bottom of the card */
+}
+
+
+/* =============================================
+   TAG PILL STYLES
+   Used in both featured cards and project cards.
+============================================= */
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #3A7BD5;
+  background-color: #e8f0fb;
+  border-radius: 4px;
+  padding: 3px 9px;
+}
+
+
+/* =============================================
+   MAP GALLERY SECTION
+   White background. A grid of map thumbnails —
+   each one just has an image and a title below it.
+============================================= */
+.map-gallery {
+  padding: 72px 0;
+  background-color: #ffffff;
+}
+
+/* 4-column grid for the thumbnails */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.gallery-tile {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Square-ish image wrapper — uses aspect-ratio to keep consistent size */
+.gallery-img-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background-color: #f0f0f0;
+  transition: border-color 0.15s ease;
+}
+
+.gallery-tile:hover .gallery-img-wrapper {
+  border-color: #3A7BD5;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder shown when image file is missing */
+.gallery-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title below each tile */
+.gallery-tile-title {
+  font-size: 13px;
+  color: #555555;
+  margin-top: 8px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+/* =============================================
+   CODING PROJECTS SECTION
+   Light gray background. Uses the same card style
+   as a standard grid — same look as the old projects
+   section but for CS / programming work.
+============================================= */
+.coding-projects {
+  padding: 72px 0;
+  background-color: #f5f5f5;
+}
+
+/* 3-column grid for coding project cards */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-
-/* =============================================
-   PROJECT CARD
-   Each card has an image on top and info below.
-   Border changes color slightly on hover — that's it.
-============================================= */
+/* Individual project card */
 .project-card {
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
@@ -298,12 +466,11 @@ img {
   transition: border-color 0.15s ease;
 }
 
-/* On hover, the card border turns blue */
 .project-card:hover {
   border-color: #3A7BD5;
 }
 
-/* The image area at the top of the card */
+/* Image area at the top of the card */
 .project-img-wrapper {
   width: 100%;
   height: 180px;
@@ -317,7 +484,7 @@ img {
   object-fit: cover;
 }
 
-/* Placeholder shown when the image file isn't found */
+/* Placeholder when image file is missing */
 .project-img-placeholder {
   width: 100%;
   height: 100%;
@@ -327,7 +494,7 @@ img {
   background-color: #f0f0f0;
 }
 
-/* The text area below the image */
+/* Text area below the image */
 .project-info {
   padding: 20px;
 }
@@ -346,7 +513,6 @@ img {
   margin-bottom: 14px;
 }
 
-/* Tool/skill tags row */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -354,17 +520,6 @@ img {
   margin-bottom: 16px;
 }
 
-/* Individual tag pill */
-.tag {
-  font-size: 12px;
-  font-weight: 500;
-  color: #3A7BD5;
-  background-color: #e8f0fb;
-  border-radius: 4px;
-  padding: 3px 9px;
-}
-
-/* The two buttons at the bottom of each card */
 .project-links {
   display: flex;
   gap: 10px;
@@ -373,15 +528,14 @@ img {
 
 /* =============================================
    CONTACT SECTION
-   White background. Has a row of contact links
-   and a big resume download button at the bottom.
+   White background. Contact links row and
+   a big resume download button.
 ============================================= */
 .contact {
   padding: 72px 0;
   background-color: #ffffff;
 }
 
-/* Row of contact link items */
 .contact-links {
   display: flex;
   flex-wrap: wrap;
@@ -389,7 +543,6 @@ img {
   align-items: center;
 }
 
-/* Each individual contact link (email, linkedin, github) */
 .contact-link {
   display: flex;
   align-items: center;
@@ -400,12 +553,10 @@ img {
   transition: color 0.15s ease;
 }
 
-/* Link text and icon turn blue on hover */
 .contact-link:hover {
   color: #3A7BD5;
 }
 
-/* The SVG icon next to each contact link */
 .contact-icon {
   width: 20px;
   height: 20px;
@@ -414,8 +565,85 @@ img {
 
 
 /* =============================================
+   MODAL OVERLAY — GEE App Popup
+   Full-screen dark overlay that appears when
+   "View Project" is clicked on the Pakistan card.
+   Hidden by default; JS adds the 'open' class to show it.
+============================================= */
+
+/* Dark overlay covering the whole viewport */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;                              /* shorthand for top/right/bottom/left: 0 */
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark bg */
+  z-index: 200;                          /* sits above navbar (z-index 100) */
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* JS adds 'open' to show the modal */
+.modal-overlay.open {
+  display: flex;
+}
+
+/* White box containing the header + iframe */
+.modal-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 90vw;
+  max-width: 1100px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Header row: title on left, X button on right */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0; /* header stays fixed height while iframe stretches */
+}
+
+.modal-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+}
+
+/* X close button — plain, no box */
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #555555;
+  cursor: pointer;
+  padding: 2px 6px;
+  transition: color 0.15s ease;
+}
+
+.modal-close:hover {
+  color: #3A7BD5;
+}
+
+/* The GEE app iframe — fills all remaining height */
+.modal-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+
+/* =============================================
    FOOTER
-   Simple dark bar at the very bottom of the page.
+   Simple bar at the bottom of the page.
 ============================================= */
 .footer {
   background-color: #f5f5f5;
@@ -428,20 +656,44 @@ img {
 
 
 /* =============================================
-   RESPONSIVE: TABLET (max 768px)
-   At this width, the projects grid goes from
-   3 columns to 2 columns, and the hero stacks
-   vertically with the photo on top.
+   RESPONSIVE: TABLET (max 900px)
+   Nav font shrinks slightly. Featured cards stack
+   vertically (image on top, text below). Gallery
+   drops to 3 columns. Projects grid to 2 columns.
+============================================= */
+@media (max-width: 900px) {
+
+  /* Featured cards go to single column (image stacks above text) */
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-img-wrapper {
+    min-height: 220px;
+  }
+
+  /* Gallery drops to 3 columns */
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+
+/* =============================================
+   RESPONSIVE: TABLET/MOBILE (max 768px)
+   Hero stacks vertically. Nav collapses to hamburger.
+   Projects grid goes to 2 columns.
 ============================================= */
 @media (max-width: 768px) {
 
-  /* Reduce hero padding and stack the two columns */
   .hero {
     padding: 48px 0 40px;
   }
 
+  /* Stack hero columns: photo on top, text below */
   .hero-container {
-    flex-direction: column-reverse; /* photo shows above text */
+    flex-direction: column-reverse;
     gap: 32px;
     text-align: center;
   }
@@ -455,17 +707,16 @@ img {
     margin-right: auto;
   }
 
-  /* Center the buttons */
   .hero-buttons {
     justify-content: center;
   }
 
-  /* Projects go to 2 columns */
+  /* Projects grid goes to 2 columns */
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Show hamburger, hide nav links by default */
+  /* Show hamburger button, hide nav links by default */
   .hamburger {
     display: flex;
   }
@@ -483,7 +734,7 @@ img {
     padding: 8px 0;
   }
 
-  /* When JS adds the 'open' class, the mobile menu shows */
+  /* JS adds 'open' class to show the mobile menu */
   .nav-links.open {
     display: flex;
   }
@@ -498,8 +749,8 @@ img {
 
 /* =============================================
    RESPONSIVE: MOBILE (max 480px)
-   At this width, projects grid goes to 1 column
-   and fonts get a bit smaller.
+   Everything goes to a single column. Font sizes
+   reduce slightly.
 ============================================= */
 @media (max-width: 480px) {
 
@@ -515,12 +766,16 @@ img {
     font-size: 22px;
   }
 
-  /* Projects stack to a single column */
+  /* Projects and gallery both go to 1 column */
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Contact links also stack vertically */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contact links stack vertically */
   .contact-links {
     flex-direction: column;
     align-items: flex-start;
