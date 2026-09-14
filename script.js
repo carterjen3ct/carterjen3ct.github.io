@@ -73,9 +73,16 @@ geeModal.addEventListener('click', function (event) {
   }
 });
 
-// Escape key closes the modal
+// Escape key closes the GEE modal
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape' && geeModal.classList.contains('open')) {
     closeModal();
+  }
+});
+
+// Click on the dark overlay (outside the box) also closes
+galleryModal.addEventListener('click', function (event) {
+  if (event.target === galleryModal) {
+    closeGalleryModal();
   }
 });

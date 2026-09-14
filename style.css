@@ -387,22 +387,22 @@ img {
   background-color: #ffffff;
 }
 
-/* 4-column grid for the thumbnails */
+/* 3-column masonry layout — each tile shows the full map at its natural height */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  column-count: 3;
+  column-gap: 16px;
 }
 
+/* Each tile stays intact when flowing across columns */
 .gallery-tile {
-  display: flex;
-  flex-direction: column;
+  break-inside: avoid;
+  margin-bottom: 16px;
+  display: block;
 }
 
-/* Square-ish image wrapper — uses aspect-ratio to keep consistent size */
+/* Image wrapper — no fixed aspect ratio, image determines the height */
 .gallery-img-wrapper {
   width: 100%;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 6px;
   border: 1px solid #e0e0e0;
@@ -414,28 +414,25 @@ img {
   border-color: #3A7BD5;
 }
 
+/* Image fills the wrapper at its natural height — no cropping */
 .gallery-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.gallery-tile:hover .gallery-img {
+  transform: scale(1.04);
 }
 
 /* Placeholder shown when image file is missing */
 .gallery-img-placeholder {
   width: 100%;
-  height: 100%;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Title below each tile */
-.gallery-tile-title {
-  font-size: 13px;
-  color: #555555;
-  margin-top: 8px;
-  text-align: center;
-  line-height: 1.4;
 }
 
 
@@ -673,9 +670,9 @@ img {
     min-height: 220px;
   }
 
-  /* Gallery drops to 3 columns */
+  /* Gallery drops to 2 columns */
   .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
+    column-count: 2;
   }
 
 }
@@ -767,13 +764,13 @@ img {
     font-size: 22px;
   }
 
-  /* Projects and gallery both go to 1 column */
+  /* Projects go to 1 column, gallery to 1 column */
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    column-count: 1;
   }
 
   /* Contact links stack vertically */
