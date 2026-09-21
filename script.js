@@ -39,7 +39,7 @@ navLinkItems.forEach(function (link) {
 ------------------------*/
 
 // Published GEE app URL — update this if the app URL ever changes
-const GEE_APP_URL = 'https://cartertjensen.users.earthengine.app/view/interactive-flood-inundation-tool';
+const GEE_APP_URL = 'https://cartertjensen.users.earthengine.app/view/flood-inundation-mapping-tool';
 
 const geeModal    = document.getElementById('geeModal');
 const geeFrame    = document.getElementById('geeFrame');
