@@ -34,13 +34,14 @@ img {
 
 
 /* =============================================
-   REUSABLE LAYOUT CONTAINER
+   REUSABLE LAYOUT CONTAINERS
    Centers page content and adds side padding.
    Used inside each section to keep things aligned.
 ============================================= */
 .section-container,
 .nav-container,
-.hero-container {
+.hero-container,
+.footer-container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
@@ -50,8 +51,7 @@ img {
 /* =============================================
    REUSABLE BUTTON STYLES
    .btn is the base. Add .btn-primary for filled blue,
-   .btn-secondary for outlined, .btn-small for compact,
-   .btn-large for the big resume download button.
+   .btn-secondary for outlined, .btn-small for compact.
 ============================================= */
 .btn {
   display: inline-block;
@@ -84,53 +84,25 @@ img {
   font-size: 13px;
 }
 
-.btn-large {
-  padding: 14px 32px;
-  font-size: 16px;
-  margin-top: 32px;
-}
-
 
 /* =============================================
-   REUSABLE SECTION TITLE STYLES
-   Heading and subtitle at the top of each section.
+   REUSABLE TAG PILL STYLES
+   Used on project tiles, detail pages, and popup modals.
 ============================================= */
-.section-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #222222;
-  margin-bottom: 8px;
-}
-
-.section-subtitle {
-  font-size: 15px;
-  color: #666666;
-  margin-bottom: 40px;
-  max-width: 600px;
-}
-
-
-/* =============================================
-   UNDER CONSTRUCTION BANNER
-   Thin bar at the very top of the page.
-   DELETE this block (and the matching HTML div) when the site is ready.
-============================================= */
-.construction-banner {
-  background-color: #e8f0fb;        /* light blue — matches tag color */
-  color: #3A7BD5;                    /* accent blue text */
-  border-bottom: 2px solid #c6d8f5;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 20px 24px;
-  letter-spacing: 0.01em;
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #3A7BD5;
+  background-color: #e8f0fb;
+  border-radius: 4px;
+  padding: 3px 9px;
 }
 
 
 /* =============================================
    NAVIGATION BAR
-   Sticks to the top of the screen as you scroll.
-   Name on the left, section links on the right.
+   Sticky top bar. Links on the left, name on the right.
+   Hamburger menu shows on mobile.
 ============================================= */
 .navbar {
   position: sticky;
@@ -147,13 +119,7 @@ img {
   height: 60px;
 }
 
-.nav-logo {
-  font-size: 17px;
-  font-weight: 600;
-  color: #222222;
-  white-space: nowrap;
-}
-
+/* Left side: nav links */
 .nav-links {
   list-style: none;
   display: flex;
@@ -170,6 +136,14 @@ img {
 
 .nav-links a:hover {
   color: #3A7BD5;
+}
+
+/* Right side: site name — plain text, not a link */
+.nav-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222222;
+  white-space: nowrap;
 }
 
 /* Hamburger button — hidden on desktop, visible on mobile */
@@ -221,9 +195,9 @@ img {
 }
 
 .hero-subtitle {
-  font-size: 20px;
-  font-weight: 500;
-  color: #3A7BD5;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222222;
   margin-bottom: 20px;
 }
 
@@ -231,14 +205,46 @@ img {
   font-size: 16px;
   color: #555555;
   line-height: 1.7;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
   max-width: 520px;
 }
 
-.hero-buttons {
+/* "Check out my favorite projects..." line below the bio */
+.hero-cta {
+  font-size: 15px;
+  color: #888888;
+  margin-bottom: 28px;
+}
+
+/* Row of small icon buttons: GitHub, LinkedIn, CV */
+.hero-social {
   display: flex;
-  gap: 14px;
+  gap: 10px;
   flex-wrap: wrap;
+}
+
+.hero-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444444;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.hero-social-link:hover {
+  border-color: #3A7BD5;
+  color: #3A7BD5;
+}
+
+.hero-social-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .hero-photo {
@@ -271,351 +277,163 @@ img {
 
 
 /* =============================================
-   FEATURED PROJECTS SECTION
-   Light gray background. Each featured project
-   gets a large two-column card: image on the left,
-   detailed text on the right.
+   UNIFIED PROJECTS SECTION
+   All projects in one 2-column masonry grid.
+   Hover shows a dark overlay with title and tools.
+   Click navigates to a detail page (full projects)
+   or opens the popup modal (simpler maps).
 ============================================= */
-.featured-projects {
+.projects {
   padding: 72px 0;
   background-color: #f5f5f5;
 }
 
-/* Two-column card layout */
-.featured-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  margin-bottom: 32px;
-  transition: border-color 0.15s ease;
-}
-
-.featured-card:hover {
-  border-color: #3A7BD5;
-}
-
-/* Left column: the project image */
-.featured-img-wrapper {
-  background-color: #f0f0f0;
-  min-height: 280px;
-  overflow: hidden;
-}
-
-.featured-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Placeholder shown when image file is missing */
-.featured-img-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f0f0;
-}
-
-/* Right column: title, description, methods, tags, links */
-.featured-info {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.featured-title {
-  font-size: 20px;
+/* "My Favorite Projects" section title bar */
+.projects-heading {
+  font-size: 26px;
   font-weight: 700;
   color: #222222;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.featured-desc {
-  font-size: 15px;
-  color: #555555;
-  line-height: 1.7;
-}
-
-/* Methods line — shown in bold with regular text after */
-.featured-methods {
-  font-size: 14px;
-  color: #666666;
-  line-height: 1.6;
-}
-
-/* Tool/skill tag pills */
-.featured-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.featured-links {
-  display: flex;
-  gap: 10px;
-  margin-top: auto; /* Pushes buttons to bottom of the card */
-}
-
-
-/* =============================================
-   TAG PILL STYLES
-   Used in both featured cards and project cards.
-============================================= */
-.tag {
-  font-size: 12px;
-  font-weight: 500;
-  color: #3A7BD5;
-  background-color: #e8f0fb;
-  border-radius: 4px;
-  padding: 3px 9px;
-}
-
-
-/* =============================================
-   MAP GALLERY SECTION
-   White background. A grid of map thumbnails —
-   each one just has an image and a title below it.
-============================================= */
-.map-gallery {
-  padding: 72px 0;
-  background-color: #ffffff;
-}
-
-/* 3-column masonry layout — each tile shows the full map at its natural height */
-.gallery-grid {
-  column-count: 3;
+/* === Detail tiles — 2-column masonry, natural image heights === */
+.projects-grid {
+  column-count: 2;
   column-gap: 16px;
 }
 
-/* Each tile stays intact when flowing across columns */
-.gallery-tile {
+/* === Popup tiles — narrower 2-column masonry below the detail tiles === */
+.projects-grid-gallery {
+  column-count: 2;
+  column-gap: 16px;
+  max-width: 72%;
+  margin: 32px auto 0;
+}
+
+/* Base tile styling */
+.project-tile {
   break-inside: avoid;
   margin-bottom: 16px;
+  cursor: pointer;
   display: block;
 }
 
-/* Image wrapper — no fixed aspect ratio, image determines the height */
-.gallery-img-wrapper {
+/* Image container — natural proportions */
+.project-tile-img-wrap {
+  position: relative;
   width: 100%;
   overflow: hidden;
   border-radius: 6px;
-  border: 1px solid #e0e0e0;
-  background-color: #f0f0f0;
-  transition: border-color 0.15s ease;
+  background-color: #e0e0e0;
 }
 
-.gallery-tile:hover .gallery-img-wrapper {
-  border-color: #3A7BD5;
-}
-
-/* Image fills the wrapper at its natural height — no cropping */
-.gallery-img {
+/* Images show at full natural proportions — no cropping */
+.project-tile-img-wrap img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
-.gallery-tile:hover .gallery-img {
+/* Dark overlay — hidden until hover */
+.project-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.58);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.project-tile:hover .project-tile-overlay {
+  opacity: 1;
+}
+
+.project-tile:hover .project-tile-img-wrap img {
   transform: scale(1.04);
 }
 
-/* Placeholder shown when image file is missing */
-.gallery-img-placeholder {
-  width: 100%;
-  min-height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/* =============================================
-   CODING PROJECTS SECTION
-   Light gray background. Uses the same card style
-   as a standard grid — same look as the old projects
-   section but for CS / programming work.
-============================================= */
-.coding-projects {
-  padding: 72px 0;
-  background-color: #f5f5f5;
-}
-
-/* 3-column grid for coding project cards */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* Individual project card */
-.project-card {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: border-color 0.15s ease;
-}
-
-.project-card:hover {
-  border-color: #3A7BD5;
-}
-
-/* Image area at the top of the card */
-.project-img-wrapper {
-  width: 100%;
-  height: 180px;
-  background-color: #f0f0f0;
-  overflow: hidden;
-}
-
-.project-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Placeholder when image file is missing */
-.project-img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f0f0;
-}
-
-/* Text area below the image */
-.project-info {
-  padding: 20px;
-}
-
-.project-title {
-  font-size: 17px;
+/* Overlay title text */
+.project-tile-title {
+  color: #ffffff;
+  font-size: 16px;
   font-weight: 600;
-  color: #222222;
-  margin-bottom: 8px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  width: 100%;
 }
 
-.project-desc {
-  font-size: 14px;
-  color: #666666;
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.project-links {
-  display: flex;
-  gap: 10px;
+/* Overlay tools/skills text */
+.project-tile-tools {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 
 /* =============================================
-   CONTACT SECTION
-   White background. Contact links row and
-   a big resume download button.
-============================================= */
-.contact {
-  padding: 72px 0;
-  background-color: #ffffff;
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  align-items: center;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  color: #444444;
-  font-weight: 500;
-  transition: color 0.15s ease;
-}
-
-.contact-link:hover {
-  color: #3A7BD5;
-}
-
-.contact-icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-
-/* =============================================
-   MODAL OVERLAY — GEE App Popup
-   Full-screen dark overlay that appears when
-   "View Project" is clicked on the Pakistan card.
-   Hidden by default; JS adds the 'open' class to show it.
+   POPUP MODAL — for simpler gallery maps
+   Opens when a popup-type project tile is clicked.
+   Populated dynamically by script.js.
 ============================================= */
 
 /* Dark overlay covering the whole viewport */
 .modal-overlay {
   display: none;
   position: fixed;
-  inset: 0;                              /* shorthand for top/right/bottom/left: 0 */
-  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark bg */
-  z-index: 200;                          /* sits above navbar (z-index 100) */
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 200;
   align-items: center;
   justify-content: center;
   padding: 24px;
 }
 
-/* JS adds 'open' to show the modal */
+/* JS adds 'open' class to show the modal */
 .modal-overlay.open {
   display: flex;
 }
 
-/* White box containing the header + iframe */
+/* White content box */
 .modal-box {
   background-color: #ffffff;
   border-radius: 8px;
   width: 90vw;
-  max-width: 1100px;
-  height: 85vh;
+  max-width: 860px;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* Header row: title on left, X button on right */
+/* Header row: title left, X button right */
 .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
   border-bottom: 1px solid #e0e0e0;
-  flex-shrink: 0; /* header stays fixed height while iframe stretches */
+  flex-shrink: 0;
 }
 
 .modal-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: #222222;
 }
 
-/* X close button — plain, no box */
+/* X close button */
 .modal-close {
   background: none;
   border: none;
@@ -631,48 +449,247 @@ img {
   color: #3A7BD5;
 }
 
-/* The GEE app iframe — fills all remaining height */
-.modal-iframe {
+/* Scrollable body area inside the popup */
+.popup-body {
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Side-by-side layout — image left, text right (used for tall maps like Japan) */
+.popup-body.layout-side {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* When side layout: image takes up the left half */
+.popup-body.layout-side .popup-img {
+  width: 52%;
+  max-height: 75vh;
+  flex-shrink: 0;
+}
+
+/* When side layout: desc + skills fill the right side */
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   flex: 1;
+}
+
+/* The map image inside the popup — show full image, no cropping */
+.popup-img {
   width: 100%;
-  border: none;
+  max-height: 55vh;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+.popup-desc {
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.7;
+}
+
+/* Skills label + tags row */
+.popup-skills-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.popup-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 
 /* =============================================
-   FOOTER
-   Simple bar at the bottom of the page.
+   FOOTER BAR
+   Icon links on the left, copyright text on the right.
 ============================================= */
 .footer {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border-top: 1px solid #e0e0e0;
-  padding: 20px 24px;
-  text-align: center;
+  padding: 16px 0;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Row of icon links */
+.footer-icons {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.footer-icon-link {
+  color: #888888;
+  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+}
+
+.footer-icon-link:hover {
+  color: #3A7BD5;
+}
+
+.footer-icon-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-text {
   font-size: 13px;
   color: #888888;
+}
+
+/* Plain-text email link in the footer — no icon, just the address */
+.footer-email-link {
+  font-size: 13px;
+  color: #888888;
+  transition: color 0.15s ease;
+}
+
+.footer-email-link:hover {
+  color: #3A7BD5;
+}
+
+
+/* =============================================
+   PROJECT DETAIL PAGE STYLES
+   Used on projects/*.html pages.
+   Back link, large title, image or GEE iframe,
+   description, skills section.
+============================================= */
+
+/* Wrapper for all detail page content */
+.detail-page {
+  padding: 48px 0 72px;
+}
+
+/* ← Back to Portfolio link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555555;
+  margin-bottom: 32px;
+  transition: color 0.15s ease;
+}
+
+.back-link:hover {
+  color: #3A7BD5;
+}
+
+.back-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Project title on detail page */
+.detail-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 32px;
+  line-height: 1.25;
+  max-width: 800px;
+}
+
+/* Large map image on detail page — full width, natural height */
+.detail-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 40px;
+}
+
+/* GEE iframe container on Pakistan detail page */
+.detail-gee-wrap {
+  width: 100%;
+  height: 75vh;
+  min-height: 480px;
+  border-radius: 6px;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.detail-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Description paragraph */
+.detail-desc {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.8;
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+
+/* "View Project" / GitHub link buttons on detail pages */
+.detail-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* Skills section */
+.detail-skills-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222222;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.detail-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detail-skills .tag {
+  font-size: 13px;
+  padding: 5px 12px;
 }
 
 
 /* =============================================
    RESPONSIVE: TABLET (max 900px)
-   Nav font shrinks slightly. Featured cards stack
-   vertically (image on top, text below). Gallery
-   drops to 3 columns. Projects grid to 2 columns.
+   Projects grid drops to 1 column.
 ============================================= */
 @media (max-width: 900px) {
 
-  /* Featured cards go to single column (image stacks above text) */
-  .featured-card {
-    grid-template-columns: 1fr;
+  .projects-grid {
+    column-count: 1;
   }
 
-  .featured-img-wrapper {
-    min-height: 220px;
-  }
-
-  /* Gallery drops to 2 columns */
-  .gallery-grid {
-    column-count: 2;
+  .projects-grid-gallery {
+    column-count: 1;
+    max-width: 100%;
   }
 
 }
@@ -681,7 +698,6 @@ img {
 /* =============================================
    RESPONSIVE: TABLET/MOBILE (max 768px)
    Hero stacks vertically. Nav collapses to hamburger.
-   Projects grid goes to 2 columns.
 ============================================= */
 @media (max-width: 768px) {
 
@@ -705,13 +721,8 @@ img {
     margin-right: auto;
   }
 
-  .hero-buttons {
+  .hero-social {
     justify-content: center;
-  }
-
-  /* Projects grid goes to 2 columns */
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Show hamburger button, hide nav links by default */
@@ -742,13 +753,24 @@ img {
     padding: 12px 24px;
   }
 
+  /* Footer stacks on mobile */
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Detail page title shrinks on mobile */
+  .detail-title {
+    font-size: 24px;
+  }
+
 }
 
 
 /* =============================================
    RESPONSIVE: MOBILE (max 480px)
-   Everything goes to a single column. Font sizes
-   reduce slightly.
+   Everything single column. Font sizes reduce.
 ============================================= */
 @media (max-width: 480px) {
 
@@ -760,24 +782,13 @@ img {
     font-size: 17px;
   }
 
-  .section-title {
-    font-size: 22px;
+  .hero-social {
+    gap: 8px;
   }
 
-  /* Projects go to 1 column, gallery to 1 column */
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid {
-    column-count: 1;
-  }
-
-  /* Contact links stack vertically */
-  .contact-links {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
+  .hero-social-link {
+    padding: 7px 12px;
+    font-size: 13px;
   }
 
 }

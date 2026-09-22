@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DFW Vehicle Emissions Exposure | Carter Jensen</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- SECTION: Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../assets/carter-jensen-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+      </ul>
+      <span class="nav-name">Carter Jensen's Portfolio</span>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- SECTION: Project Detail -->
+  <div class="detail-page">
+    <div class="section-container">
+
+      <!-- Back link -->
+      <a href="../index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Portfolio
+      </a>
+
+      <h1 class="detail-title">DFW Vehicle Emissions Exposure</h1>
+
+      <!-- Description moved to top -->
+      <p class="detail-desc">
+        For this project my team looked at how vehicle-related emissions are distributed across
+        the Dallas-Fort Worth metro area and which communities are most exposed. We pulled in OSM
+        road network data and TxDOT Annual Average Daily Traffic (AADT) counts, then used kernel
+        density analysis and hex-cell mapping in R to build an emissions exposure surface across
+        the region. From there we ran regression against census tract-level socioeconomic variables —
+        income, race, and population density — to see whether higher-exposure areas track with
+        lower-income or minority communities. Group project for GEOG 469 Urban Analytics with
+        Trent, Isaiah, Michael, and Rei.
+      </p>
+
+      <p class="detail-desc">
+        <strong>Methods:</strong> Kernel density analysis, hexagonal grid mapping, spatial regression, census data integration.
+      </p>
+
+      <!-- Project image -->
+      <img
+        src="../assets/projects/dfw-vehicle-emissions.png"
+        alt="Kernel density map of vehicle emissions exposure across the DFW metro area"
+        class="detail-img"
+        onerror="this.style.display='none';"
+      />
+
+      <!-- External links — presentation is the primary link -->
+      <div class="detail-links">
+        <a href="../assets/projects/dfw-vehicle-emissions.pptx" download class="btn btn-primary btn-small">View Presentation</a>
+        <a href="https://github.com/almzrei/project469" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small">View Code</a>
+      </div>
+
+      <!-- Skills section -->
+      <p class="detail-skills-label">Skills Used</p>
+      <div class="detail-skills">
+        <span class="tag">R</span>
+        <span class="tag">sf</span>
+        <span class="tag">tmap</span>
+        <span class="tag">tidyverse</span>
+        <span class="tag">Kernel Density Analysis</span>
+        <span class="tag">Spatial Regression</span>
+        <span class="tag">Urban Analytics</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION: Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-icons">
+        <a href="https://github.com/carterjen3ct" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/carter-t-jensen0/" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="3"/>
+            <line x1="8" y1="11" x2="8" y2="16"/>
+            <line x1="8" y1="8" x2="8" y2="8.5"/>
+            <polyline points="12,11 12,16"/>
+            <path d="M12 13a2 2 0 0 1 4 0v3"/>
+          </svg>
+        </a>
+        <!-- Email — plain text address, no icon -->
+        <a href="mailto:carter.t.jensen@gmail.com" class="footer-email-link">carter.t.jensen@gmail.com</a>
+      </div>
+      <p class="footer-text">I created and maintain carterjens3ct.github.io myself. &copy; 2026 Carter T. Jensen</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+
+</body>
+</html>
