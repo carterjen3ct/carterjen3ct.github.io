@@ -5,79 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Land Cover Change in Harrisonburg, 1992–2019 | Carter Jensen</title>
   <link rel="stylesheet" href="../style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Page description, tab icon, and browser UI color -->
+  <meta name="description" content="Land cover change in Harrisonburg, Virginia from 1992 to 2019." />
+  <meta name="theme-color" content="#1d6b52" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Connect to Google Fonts early so the font shows up faster -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 </head>
 <body>
+
+  <!-- Skip link: hidden until focused with Tab, jumps past the nav -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- SECTION: Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
       <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
         <li><a href="../assets/carter-jensen-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
       </ul>
-      <span class="nav-name">Carter Jensen's Portfolio</span>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <a href="../index.html" class="nav-name">Carter Jensen</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
+  <main id="main">
+
+  <!-- SECTION: Project Header (tinted band with back link + title) -->
+  <header class="detail-header">
+    <div class="section-container">
+      <a href="../index.html#projects" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to projects
+      </a>
+      <h1 class="detail-title">Land Cover Change in Harrisonburg, Virginia, 1992–2019</h1>
+    </div>
+  </header>
+
   <!-- SECTION: Project Detail -->
   <div class="detail-page">
     <div class="section-container">
 
-      <!-- Back link -->
-      <a href="../index.html" class="back-link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-        Back to Portfolio
-      </a>
+      <!-- Write-up on the left, methods / skills / links sidebar on the right -->
+      <div class="detail-layout">
 
-      <h1 class="detail-title">Land Cover Change in Harrisonburg, Virginia, 1992–2019</h1>
-
-      <!-- Description moved to top -->
-      <p class="detail-desc">
-        This map tracks generalized land cover change in Harrisonburg, Virginia between 1992 and
+        <div class="detail-body">
+            <p class="detail-desc">
+              This map tracks generalized land cover change in Harrisonburg, Virginia between 1992 and
         2019 using data from the National Land Cover Database (NLCD). The goal was to make spatial
         patterns of growth and land conversion immediately readable at a glance, rather than requiring
         viewers to cross-reference two separate maps.
-      </p>
+            </p>
 
-      <p class="detail-desc">
-        To achieve this, I created a custom classification scheme that assigns a unique color to each
+            <p class="detail-desc">
+              To achieve this, I created a custom classification scheme that assigns a unique color to each
         type of land cover transition while keeping land that stayed the same in 2019 the same color
         family: developed areas in grays and blacks, forest in greens, agriculture in yellows and
         oranges, bare land in browns, and water in blue. This approach lets you quickly see both
         what changed and what stayed stable across the city over nearly three decades. The map is
         projected in Virginia State Plane North. Created for GEOG 366 at James Madison University.
-      </p>
+            </p>
+        </div>
 
-      <p class="detail-desc">
-        <strong>Methods:</strong> Land cover reclassification, transition matrix analysis, custom color symbology, change detection.
-      </p>
+        <aside class="detail-aside">
 
-      <!-- Project image -->
-      <img
-        src="../assets/projects/land-cover-change-harrisonburg.png"
-        alt="Map comparing land cover change in Harrisonburg Virginia from 1992 to 2019"
-        class="detail-img"
-        onerror="this.style.display='none';"
-      />
+          <!-- Methods -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Methods</p>
+            <p class="detail-methods">Land cover reclassification, transition matrix analysis, custom color symbology, change detection.</p>
+          </div>
 
-      <!-- Skills section -->
-      <p class="detail-skills-label">Skills Used</p>
-      <div class="detail-skills">
-        <span class="tag">ArcGIS Pro</span>
-        <span class="tag">Land Cover Classification</span>
-        <span class="tag">Change Detection</span>
-        <span class="tag">Raster Analysis</span>
-        <span class="tag">Cartography</span>
+          <!-- Skills -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Skills used</p>
+            <div class="detail-skills">
+              <span class="tag">ArcGIS Pro</span>
+              <span class="tag">Land Cover Classification</span>
+              <span class="tag">Change Detection</span>
+              <span class="tag">Raster Analysis</span>
+              <span class="tag">Cartography</span>
+            </div>
+          </div>
+
+        </aside>
       </div>
+
+      <!-- Project map — click to open the full-size image in a new tab -->
+      <figure class="detail-figure">
+        <a href="../assets/projects/land-cover-change-harrisonburg.png" target="_blank" rel="noopener noreferrer">
+          <img
+            src="../assets/projects/web/land-cover-change-harrisonburg.webp"
+            width="1510" height="2000" loading="lazy" decoding="async"
+            alt="Map comparing land cover change in Harrisonburg Virginia from 1992 to 2019"
+            class="detail-img"
+            onerror="this.style.display='none';"
+          />
+        </a>
+        <figcaption>Click the map to open it full size.</figcaption>
+      </figure>
+
+      <!-- Previous / next project (loops around) -->
+      <nav class="detail-next" aria-label="More projects">
+        <a href="sidewalk-suitability.html" class="detail-next-link">
+          <span>Previous project</span>
+          Sidewalk Suitability, Harrisonburg
+        </a>
+        <a href="pakistan-flood.html" class="detail-next-link detail-next-link--right">
+          <span>Next project</span>
+          Pakistan 2022 Flood Inundation Mapping
+        </a>
+      </nav>
 
     </div>
   </div>
+
+  </main>
 
   <!-- SECTION: Footer -->
   <footer class="footer">

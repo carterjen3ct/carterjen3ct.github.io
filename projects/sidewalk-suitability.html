@@ -5,80 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sidewalk Suitability Analysis, Harrisonburg | Carter Jensen</title>
   <link rel="stylesheet" href="../style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Page description, tab icon, and browser UI color -->
+  <meta name="description" content="Suitability analysis for new sidewalks in Harrisonburg, Virginia." />
+  <meta name="theme-color" content="#1d6b52" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Connect to Google Fonts early so the font shows up faster -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 </head>
 <body>
+
+  <!-- Skip link: hidden until focused with Tab, jumps past the nav -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- SECTION: Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
       <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
         <li><a href="../assets/carter-jensen-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
       </ul>
-      <span class="nav-name">Carter Jensen's Portfolio</span>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <a href="../index.html" class="nav-name">Carter Jensen</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
+  <main id="main">
+
+  <!-- SECTION: Project Header (tinted band with back link + title) -->
+  <header class="detail-header">
+    <div class="section-container">
+      <a href="../index.html#projects" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to projects
+      </a>
+      <h1 class="detail-title">Sidewalk Suitability Analysis, Harrisonburg, Virginia</h1>
+    </div>
+  </header>
+
   <!-- SECTION: Project Detail -->
   <div class="detail-page">
     <div class="section-container">
 
-      <!-- Back link -->
-      <a href="../index.html" class="back-link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-        Back to Portfolio
-      </a>
+      <!-- Write-up on the left, methods / skills / links sidebar on the right -->
+      <div class="detail-layout">
 
-      <h1 class="detail-title">Sidewalk Suitability Analysis, Harrisonburg, Virginia</h1>
-
-      <!-- Description moved to top -->
-      <p class="detail-desc">
-        This suitability analysis identifies priority areas for new sidewalk infrastructure in
+        <div class="detail-body">
+            <p class="detail-desc">
+              This suitability analysis identifies priority areas for new sidewalk infrastructure in
         Harrisonburg, Virginia. Using a 36x36-meter grid cell framework, I scored locations
         across the city based on a combination of spatial factors — proximity to key destinations,
         existing infrastructure gaps, land use patterns, and pedestrian demand — to produce a
         continuous surface ranging from least to most suitable for sidewalk investment.
-      </p>
+            </p>
 
-      <p class="detail-desc">
-        The resulting map makes it easy to see at a glance where new sidewalks would have the
+            <p class="detail-desc">
+              The resulting map makes it easy to see at a glance where new sidewalks would have the
         greatest impact on pedestrian connectivity and safety. Areas around the JMU campus
         corridor show a concentration of high-suitability cells, reflecting the density of
         destinations and foot traffic in that part of the city. Created for GEOG 366 at
         James Madison University using City of Harrisonburg GIS data and real estate parcel data.
-      </p>
+            </p>
+        </div>
 
-      <p class="detail-desc">
-        <strong>Methods:</strong> Raster-based suitability analysis, weighted overlay, grid cell scoring.
-      </p>
+        <aside class="detail-aside">
 
-      <!-- Project image -->
-      <img
-        src="../assets/projects/sidewalk-suitability-harrisonburg.png"
-        alt="Sidewalk suitability analysis map of Harrisonburg Virginia identifying priority areas for sidewalk infrastructure"
-        class="detail-img"
-        onerror="this.style.display='none';"
-      />
+          <!-- Methods -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Methods</p>
+            <p class="detail-methods">Raster-based suitability analysis, weighted overlay, grid cell scoring.</p>
+          </div>
 
-      <!-- Skills section -->
-      <p class="detail-skills-label">Skills Used</p>
-      <div class="detail-skills">
-        <span class="tag">ArcGIS Pro</span>
-        <span class="tag">Suitability Analysis</span>
-        <span class="tag">Raster Analysis</span>
-        <span class="tag">Weighted Overlay</span>
-        <span class="tag">Urban Planning</span>
-        <span class="tag">Cartography</span>
+          <!-- Skills -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Skills used</p>
+            <div class="detail-skills">
+              <span class="tag">ArcGIS Pro</span>
+              <span class="tag">Suitability Analysis</span>
+              <span class="tag">Raster Analysis</span>
+              <span class="tag">Weighted Overlay</span>
+              <span class="tag">Urban Planning</span>
+              <span class="tag">Cartography</span>
+            </div>
+          </div>
+
+        </aside>
       </div>
+
+      <!-- Project map — click to open the full-size image in a new tab -->
+      <figure class="detail-figure">
+        <a href="../assets/projects/sidewalk-suitability-harrisonburg.png" target="_blank" rel="noopener noreferrer">
+          <img
+            src="../assets/projects/web/sidewalk-suitability-harrisonburg.webp"
+            width="1545" height="2000" loading="lazy" decoding="async"
+            alt="Sidewalk suitability analysis map of Harrisonburg Virginia identifying priority areas for sidewalk infrastructure"
+            class="detail-img"
+            onerror="this.style.display='none';"
+          />
+        </a>
+        <figcaption>Click the map to open it full size.</figcaption>
+      </figure>
+
+      <!-- Previous / next project (loops around) -->
+      <nav class="detail-next" aria-label="More projects">
+        <a href="dc-transportation-vulnerability.html" class="detail-next-link">
+          <span>Previous project</span>
+          Transportation Vulnerability in D.C.
+        </a>
+        <a href="land-cover-change.html" class="detail-next-link detail-next-link--right">
+          <span>Next project</span>
+          Land Cover Change, Harrisonburg
+        </a>
+      </nav>
 
     </div>
   </div>
+
+  </main>
 
   <!-- SECTION: Footer -->
   <footer class="footer">
