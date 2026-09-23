@@ -63,6 +63,28 @@ img {
   max-width: 100%;
 }
 
+/* Sections reached from nav links stop below the sticky navbar, not under it */
+[id] {
+  scroll-margin-top: 76px;
+}
+
+/* "Skip to content" link — off screen until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  z-index: 300;
+  padding: 8px 14px;
+  border-radius: 0 0 6px 6px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* Visible outline when moving around the page with the keyboard */
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -169,7 +191,7 @@ img {
   height: 60px;
 }
 
-/* Site name — plain text, moved to the left */
+/* Site name — links home, moved to the left */
 .nav-name {
   order: -1;
   font-size: 16px;
@@ -510,8 +532,9 @@ img {
    Colored squares work like a map legend.
 ============================================= */
 .skills {
-  padding: 88px 0;
+  padding: 72px 0;
   background-color: var(--bg);
+  border-top: 1px solid var(--line);   /* separates it from the tinted projects band above */
 }
 
 /* Legend swatch colors (one per skill category) */
@@ -545,15 +568,15 @@ img {
   gap: 8px;
 }
 
-/* Featured skills — two columns separated by thin lines */
+/* Featured skills — three compact columns separated by thin lines */
 .skills-featured {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 56px;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
 }
 
 .skill {
-  padding: 24px 0;
+  padding: 18px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -561,35 +584,32 @@ img {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 /* Certification badge (ArcGIS Pro) */
 .skill-badge {
   display: inline-block;
-  margin-bottom: 10px;
-  padding: 3px 10px;
+  margin-bottom: 6px;
+  padding: 1px 8px;
   border: 1px solid var(--accent);
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--accent);
 }
 
 .skill-desc {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 10px;
-  max-width: 480px;
+  margin-bottom: 4px;
 }
 
-/* "Used in" line with links to the projects */
+/* Links to the projects where the skill shows up */
 .skill-used {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
 }
 
@@ -602,46 +622,35 @@ img {
   text-decoration: underline;
 }
 
-/* "Other skills" heading */
-.skills-other-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 48px 0 16px;
-  padding-top: 32px;
+/* "Other skills" — one wrapping row of names */
+.skills-other {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 28px;
+  margin-top: 8px;
+  padding-top: 18px;
   border-top: 1px solid var(--line);
 }
 
-/* Other skills — 3 compact columns: swatch, name, one line of detail */
-.skills-other {
+.skills-other h3 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.skills-other ul {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
 }
 
 .skills-other li {
-  display: grid;
-  grid-template-columns: 12px 1fr;
-  column-gap: 10px;
-  align-content: start;   /* don't stretch rows when a neighbor is taller */
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
   color: var(--muted);
-  line-height: 1.55;
-}
-
-/* Square lines up with the skill name */
-.skills-other .swatch {
-  margin-top: 5px;
-}
-
-.skills-other strong {
-  font-size: 15px;
-  color: var(--ink);
-}
-
-/* Detail text sits under the name, lined up with it */
-.skills-other li span:last-child {
-  grid-column: 2;
 }
 
 
@@ -1239,10 +1248,6 @@ img {
   }
 
   .skills-featured {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-other {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1263,7 +1268,7 @@ img {
   .popup-media {
     flex: none;
     height: 55vh;
-    padding: 16px;
+    padding: 60px 16px 16px;   /* top room so the X button doesn't cover the map */
   }
 
   .popup-info {
@@ -1313,13 +1318,15 @@ img {
     height: 170px;
   }
 
-  /* Place names would sit on top of the stacked hero text, so hide them */
+  /* Map labels would sit on top of the stacked hero text (or get cut off at the edge), so hide them */
   .topo-place,
   .topo-town,
   .topo-feature,
   .topo-region,
   .topo-label,
-  .topo-spot {
+  .topo-spot,
+  .topo-tick,
+  .topo-tickmark {
     display: none;
   }
 
@@ -1367,6 +1374,13 @@ img {
     font-size: 30px;
   }
 
+  /* Shorter Earth Engine embed on phones so it doesn't trap page scrolling
+     (the "Open the app" button opens it full screen) */
+  .detail-gee-wrap {
+    height: 60vh;
+    min-height: 360px;
+  }
+
   .detail-figure a {
     padding: 12px;
   }
@@ -1405,7 +1419,7 @@ img {
     gap: 16px;
   }
 
-  .skills-other {
+  .skills-featured {
     grid-template-columns: 1fr;
   }
 

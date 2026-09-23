@@ -3,7 +3,7 @@
    1. Hamburger menu toggle (mobile)
    2. Close mobile menu on nav link click
    3. Popup modal for the "More maps" tiles
-      (open, close, previous/next, keyboard)
+      (open, close, previous/next, keyboard, swipe on phones)
    4. Navbar shadow on scroll
    5. Scroll reveal animations
 ============================================= */
@@ -21,14 +21,17 @@ var navLinks  = document.getElementById('navLinks');
 
 if (hamburger && navLinks) {
 
+  /* Open/close the menu and tell screen readers which state it's in */
   hamburger.addEventListener('click', function () {
-    navLinks.classList.toggle('open');
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
   });
 
   /* Close menu when a nav link is tapped on mobile */
   navLinks.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
       navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 
@@ -54,7 +57,7 @@ function showPopup(i) {
   document.getElementById('popupDesc').textContent  = tile.dataset.desc;
   document.getElementById('popupImg').src           = tile.dataset.img;
   document.getElementById('popupImg').alt           = tile.dataset.title;
-  document.getElementById('popupFull').href         = tile.dataset.img;
+  document.getElementById('popupFull').href         = tile.dataset.full; /* original full-res PNG */
   document.getElementById('popupCount').textContent = (i + 1) + ' of ' + popupTiles.length;
 
   /* Build skill tag pills from the comma-separated list */
@@ -103,6 +106,21 @@ if (popupModal) {
   document.getElementById('popupPrev').addEventListener('click', function () { stepPopup(-1); });
   document.getElementById('popupNext').addEventListener('click', function () { stepPopup(1); });
 
+  /* Phones: swipe left/right on the map to flip to the next/previous one */
+  var popupMedia = document.querySelector('.popup-media');
+  var touchStartX = null;
+
+  popupMedia.addEventListener('touchstart', function (event) {
+    touchStartX = event.touches[0].clientX;
+  }, { passive: true });
+
+  popupMedia.addEventListener('touchend', function (event) {
+    if (touchStartX === null) return;
+    var distance = event.changedTouches[0].clientX - touchStartX;
+    touchStartX = null;
+    if (Math.abs(distance) > 50) stepPopup(distance < 0 ? 1 : -1); /* ignore small taps/wiggles */
+  }, { passive: true });
+
   /* Clicking the dark overlay (outside the white box) closes it */
   popupModal.addEventListener('click', function (event) {
     if (event.target === popupModal) closePopup();
@@ -144,7 +162,7 @@ if (navbar) {
 -----------------------------*/
 
 var revealItems = document.querySelectorAll(
-  '.section-head, .legend, .skill, .skills-other li, .project-tile, .detail-layout, .detail-figure, .detail-gee-wrap, .detail-next'
+  '.section-head, .legend, .skill, .skills-other, .project-tile, .detail-layout, .detail-figure, .detail-gee-wrap, .detail-next'
 );
 var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -5,9 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Land Cover Change in Harrisonburg, 1992–2019 | Carter Jensen</title>
   <link rel="stylesheet" href="../style.css" />
+
+  <!-- Page description, tab icon, and browser UI color -->
+  <meta name="description" content="Land cover change in Harrisonburg, Virginia from 1992 to 2019." />
+  <meta name="theme-color" content="#1d6b52" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Connect to Google Fonts early so the font shows up faster -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 </head>
 <body>
+
+  <!-- Skip link: hidden until focused with Tab, jumps past the nav -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- SECTION: Navigation Bar -->
   <nav class="navbar">
@@ -17,12 +30,14 @@
         <li><a href="../index.html#skills">Skills</a></li>
         <li><a href="../assets/carter-jensen-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
       </ul>
-      <span class="nav-name">Carter Jensen</span>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <a href="../index.html" class="nav-name">Carter Jensen</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
+
+  <main id="main">
 
   <!-- SECTION: Project Header (tinted band with back link + title) -->
   <header class="detail-header">
@@ -89,7 +104,8 @@
       <figure class="detail-figure">
         <a href="../assets/projects/land-cover-change-harrisonburg.png" target="_blank" rel="noopener noreferrer">
           <img
-            src="../assets/projects/land-cover-change-harrisonburg.png"
+            src="../assets/projects/web/land-cover-change-harrisonburg.webp"
+            width="1510" height="2000" loading="lazy" decoding="async"
             alt="Map comparing land cover change in Harrisonburg Virginia from 1992 to 2019"
             class="detail-img"
             onerror="this.style.display='none';"
@@ -112,6 +128,8 @@
 
     </div>
   </div>
+
+  </main>
 
   <!-- SECTION: Footer -->
   <footer class="footer">
