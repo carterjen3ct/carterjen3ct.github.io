@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DFW Vehicle Emissions Exposure | Carter Jensen</title>
   <link rel="stylesheet" href="../style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -13,33 +13,40 @@
   <nav class="navbar">
     <div class="nav-container">
       <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
         <li><a href="../assets/carter-jensen-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
       </ul>
-      <span class="nav-name">Carter Jensen's Portfolio</span>
+      <span class="nav-name">Carter Jensen</span>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
+  <!-- SECTION: Project Header (tinted band with back link + title) -->
+  <header class="detail-header">
+    <div class="section-container">
+      <a href="../index.html#projects" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to projects
+      </a>
+      <h1 class="detail-title">DFW Vehicle Emissions Exposure</h1>
+    </div>
+  </header>
+
   <!-- SECTION: Project Detail -->
   <div class="detail-page">
     <div class="section-container">
 
-      <!-- Back link -->
-      <a href="../index.html" class="back-link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-        Back to Portfolio
-      </a>
+      <!-- Write-up on the left, methods / skills / links sidebar on the right -->
+      <div class="detail-layout">
 
-      <h1 class="detail-title">DFW Vehicle Emissions Exposure</h1>
-
-      <!-- Description moved to top -->
-      <p class="detail-desc">
-        For this project my team looked at how vehicle-related emissions are distributed across
+        <div class="detail-body">
+            <p class="detail-desc">
+              For this project my team looked at how vehicle-related emissions are distributed across
         the Dallas-Fort Worth metro area and which communities are most exposed. We pulled in OSM
         road network data and TxDOT Annual Average Daily Traffic (AADT) counts, then used kernel
         density analysis and hex-cell mapping in R to build an emissions exposure surface across
@@ -47,37 +54,64 @@
         income, race, and population density — to see whether higher-exposure areas track with
         lower-income or minority communities. Group project for GEOG 469 Urban Analytics with
         Trent, Isaiah, Michael, and Rei.
-      </p>
+            </p>
+        </div>
 
-      <p class="detail-desc">
-        <strong>Methods:</strong> Kernel density analysis, hexagonal grid mapping, spatial regression, census data integration.
-      </p>
+        <aside class="detail-aside">
 
-      <!-- Project image -->
-      <img
-        src="../assets/projects/dfw-vehicle-emissions.png"
-        alt="Kernel density map of vehicle emissions exposure across the DFW metro area"
-        class="detail-img"
-        onerror="this.style.display='none';"
-      />
+          <!-- Methods -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Methods</p>
+            <p class="detail-methods">Kernel density analysis, hexagonal grid mapping, spatial regression, census data integration.</p>
+          </div>
 
-      <!-- External links — presentation is the primary link -->
-      <div class="detail-links">
-        <a href="../assets/projects/dfw-vehicle-emissions.pptx" download class="btn btn-primary btn-small">View Presentation</a>
-        <a href="https://github.com/almzrei/project469" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small">View Code</a>
+          <!-- Skills -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Skills used</p>
+            <div class="detail-skills">
+              <span class="tag">R</span>
+              <span class="tag">sf</span>
+              <span class="tag">tmap</span>
+              <span class="tag">tidyverse</span>
+              <span class="tag">Kernel Density Analysis</span>
+              <span class="tag">Spatial Regression</span>
+              <span class="tag">Urban Analytics</span>
+            </div>
+          </div>
+
+          <!-- Links (presentation, code, etc.) -->
+          <div class="detail-aside-block detail-links">
+          <a href="../assets/projects/dfw-vehicle-emissions.pptx" download class="btn btn-primary btn-small">View Presentation</a>
+          <a href="https://github.com/almzrei/project469" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small">View Code</a>
+          </div>
+
+        </aside>
       </div>
 
-      <!-- Skills section -->
-      <p class="detail-skills-label">Skills Used</p>
-      <div class="detail-skills">
-        <span class="tag">R</span>
-        <span class="tag">sf</span>
-        <span class="tag">tmap</span>
-        <span class="tag">tidyverse</span>
-        <span class="tag">Kernel Density Analysis</span>
-        <span class="tag">Spatial Regression</span>
-        <span class="tag">Urban Analytics</span>
-      </div>
+      <!-- Project map — click to open the full-size image in a new tab -->
+      <figure class="detail-figure">
+        <a href="../assets/projects/dfw-vehicle-emissions.png" target="_blank" rel="noopener noreferrer">
+          <img
+            src="../assets/projects/dfw-vehicle-emissions.png"
+            alt="Kernel density map of vehicle emissions exposure across the DFW metro area"
+            class="detail-img"
+            onerror="this.style.display='none';"
+          />
+        </a>
+        <figcaption>Click the map to open it full size.</figcaption>
+      </figure>
+
+      <!-- Previous / next project (loops around) -->
+      <nav class="detail-next" aria-label="More projects">
+        <a href="pakistan-flood.html" class="detail-next-link">
+          <span>Previous project</span>
+          Pakistan 2022 Flood Inundation Mapping
+        </a>
+        <a href="dc-transportation-vulnerability.html" class="detail-next-link detail-next-link--right">
+          <span>Next project</span>
+          Transportation Vulnerability in D.C.
+        </a>
+      </nav>
 
     </div>
   </div>

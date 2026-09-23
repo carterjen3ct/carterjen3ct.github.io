@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pakistan 2022 Flood Inundation Mapping | Carter Jensen</title>
   <link rel="stylesheet" href="../style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -13,44 +13,77 @@
   <nav class="navbar">
     <div class="nav-container">
       <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
         <li><a href="../assets/carter-jensen-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
       </ul>
-      <span class="nav-name">Carter Jensen's Portfolio</span>
+      <span class="nav-name">Carter Jensen</span>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
+  <!-- SECTION: Project Header (tinted band with back link + title) -->
+  <header class="detail-header">
+    <div class="section-container">
+      <a href="../index.html#projects" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to projects
+      </a>
+      <h1 class="detail-title">Pakistan 2022 Flood Inundation Mapping</h1>
+    </div>
+  </header>
+
   <!-- SECTION: Project Detail -->
   <div class="detail-page">
     <div class="section-container">
 
-      <!-- Back link -->
-      <a href="../index.html" class="back-link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-        Back to Portfolio
-      </a>
+      <!-- Write-up on the left, methods / skills / links sidebar on the right -->
+      <div class="detail-layout">
 
-      <h1 class="detail-title">Pakistan 2022 Flood Inundation Mapping</h1>
-
-      <!-- Description moved to top so it appears before the interactive tool -->
-      <p class="detail-desc">
-        This project used Google Earth Engine to map and assess flood inundation from the 2022 Pakistan
+        <div class="detail-body">
+            <p class="detail-desc">
+              This project used Google Earth Engine to map and assess flood inundation from the 2022 Pakistan
         floods — one of the worst flooding disasters in recent history, affecting over 33 million people.
         I wrote a JavaScript script in the GEE Code Editor to process Sentinel-1 SAR (Synthetic Aperture Radar)
         imagery, generate flood inundation masks through SAR change detection, and run an accuracy assessment
         comparing the results to reference data using a confusion matrix. The interactive tool below lets you
         explore the flood extent across the affected regions. It was a good exercise in understanding both the
         power and limitations of remote sensing for real-world disaster response.
-      </p>
+            </p>
+        </div>
 
-      <p class="detail-desc">
-        <strong>Methods:</strong> SAR change detection, flood inundation masking, accuracy assessment, confusion matrix analysis.
-      </p>
+        <aside class="detail-aside">
+
+          <!-- Methods -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Methods</p>
+            <p class="detail-methods">SAR change detection, flood inundation masking, accuracy assessment, confusion matrix analysis.</p>
+          </div>
+
+          <!-- Skills -->
+          <div class="detail-aside-block">
+            <p class="detail-skills-label">Skills used</p>
+            <div class="detail-skills">
+              <span class="tag">Google Earth Engine</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Remote Sensing</span>
+              <span class="tag">Accuracy Assessment</span>
+              <span class="tag">Change Detection</span>
+            </div>
+          </div>
+
+          <!-- Links (presentation, code, etc.) -->
+          <div class="detail-aside-block detail-links">
+          <!-- UPDATE: Add your GitHub link for the GEE script when available -->
+          <a href="#" class="btn btn-secondary btn-small">GitHub</a>
+          </div>
+
+        </aside>
+      </div>
 
       <!-- GEE app embedded directly — loads on page open -->
       <div class="detail-gee-wrap">
@@ -62,21 +95,17 @@
         ></iframe>
       </div>
 
-      <!-- External links -->
-      <div class="detail-links">
-        <!-- UPDATE: Add your GitHub link for the GEE script when available -->
-        <a href="#" class="btn btn-secondary btn-small">GitHub</a>
-      </div>
-
-      <!-- Skills section -->
-      <p class="detail-skills-label">Skills Used</p>
-      <div class="detail-skills">
-        <span class="tag">Google Earth Engine</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Remote Sensing</span>
-        <span class="tag">Accuracy Assessment</span>
-        <span class="tag">Change Detection</span>
-      </div>
+      <!-- Previous / next project (loops around) -->
+      <nav class="detail-next" aria-label="More projects">
+        <a href="land-cover-change.html" class="detail-next-link">
+          <span>Previous project</span>
+          Land Cover Change, Harrisonburg
+        </a>
+        <a href="dfw-emissions.html" class="detail-next-link detail-next-link--right">
+          <span>Next project</span>
+          DFW Vehicle Emissions Exposure
+        </a>
+      </nav>
 
     </div>
   </div>
