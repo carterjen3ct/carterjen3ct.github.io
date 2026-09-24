@@ -8,7 +8,6 @@
    5. Scroll reveal animations
 ============================================= */
 
-
 /* ---- HAMBURGER MENU TOGGLE ----
    Adds/removes 'open' on the nav links list.
    CSS shows the mobile menu when 'open' is present.
@@ -16,27 +15,24 @@
    index.html and project detail pages.
 ---------------------------------*/
 
-var hamburger = document.getElementById('hamburger');
-var navLinks  = document.getElementById('navLinks');
+var hamburger = document.getElementById("hamburger");
+var navLinks = document.getElementById("navLinks");
 
 if (hamburger && navLinks) {
-
   /* Open/close the menu and tell screen readers which state it's in */
-  hamburger.addEventListener('click', function () {
-    var isOpen = navLinks.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
+  hamburger.addEventListener("click", function () {
+    var isOpen = navLinks.classList.toggle("open");
+    hamburger.setAttribute("aria-expanded", isOpen);
   });
 
   /* Close menu when a nav link is tapped on mobile */
-  navLinks.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
+  navLinks.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      navLinks.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
     });
   });
-
 }
-
 
 /* ---- POPUP MODAL ----
    Detail-page tiles are plain <a> links and need no JS.
@@ -44,8 +40,10 @@ if (hamburger && navLinks) {
    Everything is guarded so detail pages (no modal) don't error.
 ----------------------*/
 
-var popupModal  = document.getElementById('popupModal');
-var popupTiles  = Array.prototype.slice.call(document.querySelectorAll('.project-tile--popup'));
+var popupModal = document.getElementById("popupModal");
+var popupTiles = Array.prototype.slice.call(
+  document.querySelectorAll(".project-tile--popup"),
+);
 var currentIndex = -1; /* which tile is showing; -1 means the modal is closed */
 
 /* Fill the modal with the data-* attributes from tile number i */
@@ -53,19 +51,21 @@ function showPopup(i) {
   var tile = popupTiles[i];
   currentIndex = i;
 
-  document.getElementById('popupTitle').textContent = tile.dataset.title;
-  document.getElementById('popupDesc').textContent  = tile.dataset.desc;
-  document.getElementById('popupImg').src           = tile.dataset.img;
-  document.getElementById('popupImg').alt           = tile.dataset.title;
-  document.getElementById('popupFull').href         = tile.dataset.full; /* original full-res PNG */
-  document.getElementById('popupCount').textContent = (i + 1) + ' of ' + popupTiles.length;
+  document.getElementById("popupTitle").textContent = tile.dataset.title;
+  document.getElementById("popupDesc").textContent = tile.dataset.desc;
+  document.getElementById("popupImg").src = tile.dataset.img;
+  document.getElementById("popupImg").alt = tile.dataset.title;
+  document.getElementById("popupFull").href =
+    tile.dataset.full; /* original full-res PNG */
+  document.getElementById("popupCount").textContent =
+    i + 1 + " of " + popupTiles.length;
 
   /* Build skill tag pills from the comma-separated list */
-  var skills = document.getElementById('popupSkills');
-  skills.innerHTML = '';
-  tile.dataset.skills.split(',').forEach(function (skill) {
-    var tag = document.createElement('span');
-    tag.className   = 'tag';
+  var skills = document.getElementById("popupSkills");
+  skills.innerHTML = "";
+  tile.dataset.skills.split(",").forEach(function (skill) {
+    var tag = document.createElement("span");
+    tag.className = "tag";
     tag.textContent = skill.trim();
     skills.appendChild(tag);
   });
@@ -74,15 +74,17 @@ function showPopup(i) {
 /* Open the modal on tile number i and lock page scrolling */
 function openPopup(i) {
   showPopup(i);
-  popupModal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('closePopup').focus(); /* move keyboard focus into the modal */
+  popupModal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document
+    .getElementById("closePopup")
+    .focus(); /* move keyboard focus into the modal */
 }
 
 /* Close the modal and send keyboard focus back to the tile it was opened from */
 function closePopup() {
-  popupModal.classList.remove('open');
-  document.body.style.overflow = '';
+  popupModal.classList.remove("open");
+  document.body.style.overflow = "";
   popupTiles[currentIndex].focus();
   currentIndex = -1;
 }
@@ -93,67 +95,76 @@ function stepPopup(direction) {
 }
 
 if (popupModal) {
-
   /* Clicking a tile opens the modal on that tile */
   popupTiles.forEach(function (tile, i) {
-    tile.addEventListener('click', function () {
+    tile.addEventListener("click", function () {
       openPopup(i);
     });
   });
 
   /* Close button, previous and next buttons */
-  document.getElementById('closePopup').addEventListener('click', closePopup);
-  document.getElementById('popupPrev').addEventListener('click', function () { stepPopup(-1); });
-  document.getElementById('popupNext').addEventListener('click', function () { stepPopup(1); });
+  document.getElementById("closePopup").addEventListener("click", closePopup);
+  document.getElementById("popupPrev").addEventListener("click", function () {
+    stepPopup(-1);
+  });
+  document.getElementById("popupNext").addEventListener("click", function () {
+    stepPopup(1);
+  });
 
   /* Phones: swipe left/right on the map to flip to the next/previous one */
-  var popupMedia = document.querySelector('.popup-media');
+  var popupMedia = document.querySelector(".popup-media");
   var touchStartX = null;
 
-  popupMedia.addEventListener('touchstart', function (event) {
-    touchStartX = event.touches[0].clientX;
-  }, { passive: true });
+  popupMedia.addEventListener(
+    "touchstart",
+    function (event) {
+      touchStartX = event.touches[0].clientX;
+    },
+    { passive: true },
+  );
 
-  popupMedia.addEventListener('touchend', function (event) {
-    if (touchStartX === null) return;
-    var distance = event.changedTouches[0].clientX - touchStartX;
-    touchStartX = null;
-    if (Math.abs(distance) > 50) stepPopup(distance < 0 ? 1 : -1); /* ignore small taps/wiggles */
-  }, { passive: true });
+  popupMedia.addEventListener(
+    "touchend",
+    function (event) {
+      if (touchStartX === null) return;
+      var distance = event.changedTouches[0].clientX - touchStartX;
+      touchStartX = null;
+      if (Math.abs(distance) > 50)
+        stepPopup(distance < 0 ? 1 : -1); /* ignore small taps/wiggles */
+    },
+    { passive: true },
+  );
 
   /* Clicking the dark overlay (outside the white box) closes it */
-  popupModal.addEventListener('click', function (event) {
+  popupModal.addEventListener("click", function (event) {
     if (event.target === popupModal) closePopup();
   });
 
   /* Keyboard: Escape closes, left/right arrows flip through maps */
-  document.addEventListener('keydown', function (event) {
+  document.addEventListener("keydown", function (event) {
     if (currentIndex === -1) return;
-    if (event.key === 'Escape')     closePopup();
-    if (event.key === 'ArrowLeft')  stepPopup(-1);
-    if (event.key === 'ArrowRight') stepPopup(1);
+    if (event.key === "Escape") closePopup();
+    if (event.key === "ArrowLeft") stepPopup(-1);
+    if (event.key === "ArrowRight") stepPopup(1);
   });
-
 }
-
 
 /* ---- NAVBAR SHADOW ON SCROLL ----
    Adds .scrolled to the navbar once the page moves
    down a little, so it gets a soft shadow.
 -----------------------------------*/
 
-var navbar = document.querySelector('.navbar');
+var navbar = document.querySelector(".navbar");
 
 /* Turn the shadow on/off depending on scroll position */
 function updateNavShadow() {
-  navbar.classList.toggle('scrolled', window.scrollY > 8);
+  navbar.classList.toggle("scrolled", window.scrollY > 8);
 }
 
 if (navbar) {
-  window.addEventListener('scroll', updateNavShadow, { passive: true });
+  window.addEventListener("scroll", updateNavShadow, { passive: true });
   updateNavShadow();
 }
-
 
 /* ---- SCROLL REVEAL ----
    Section headings, skills, project tiles, and detail-page
@@ -162,29 +173,32 @@ if (navbar) {
 -----------------------------*/
 
 var revealItems = document.querySelectorAll(
-  '.section-head, .legend, .skill, .skills-other, .project-tile, .detail-layout, .detail-figure, .detail-gee-wrap, .detail-next'
+  ".section-head, .legend, .skill, .skills-other, .org, .project-tile, .detail-layout, .detail-figure, .detail-gee-wrap, .detail-next",
 );
-var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
-if ('IntersectionObserver' in window && !reduceMotion) {
-
+if ("IntersectionObserver" in window && !reduceMotion) {
   /* Show each item once it's 10% on screen, then stop watching it */
-  var revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+  var revealObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
 
   /* Hide items and start watching. Items in the same row get a small
      stagger (0, 90, 180, 270ms) so a row ripples in left to right. */
   revealItems.forEach(function (item) {
     var position = Array.prototype.indexOf.call(item.parentNode.children, item);
-    item.style.transitionDelay = (position % 4) * 90 + 'ms';
-    item.classList.add('reveal');
+    item.style.transitionDelay = (position % 4) * 90 + "ms";
+    item.classList.add("reveal");
     revealObserver.observe(item);
   });
-
 }
