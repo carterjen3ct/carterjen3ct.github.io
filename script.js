@@ -60,6 +60,11 @@ function showPopup(i) {
   document.getElementById("popupCount").textContent =
     i + 1 + " of " + popupTiles.length;
 
+  /* Log which map was viewed in GoatCounter (skipped if an ad blocker stops the script) */
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({ path: "popup: " + tile.dataset.title, event: true });
+  }
+
   /* Build skill tag pills from the comma-separated list */
   var skills = document.getElementById("popupSkills");
   skills.innerHTML = "";
